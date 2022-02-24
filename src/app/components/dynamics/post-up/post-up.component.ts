@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared/shared.service';
 
 @Component({
@@ -10,15 +11,31 @@ export class PostUpComponent implements OnInit {
 
   selectedFile:any;
   
-  constructor(private service: SharedService) { }
+  constructor(
+    private service: SharedService,
+    private fb: FormBuilder
+  ) { }
+
+  postForm!: FormGroup
 
   baseUrlImg = 'https://localhost:44353/Photos/Product/News/';
 
   arrImg:any = []
 
-  trangthai: string = ''
+  loaiHinh: string = ''
   
   ngOnInit(): void {
+    this.postForm = this.fb.group({
+      canGoc: this.fb.control(false),
+      tinhTrang: this.fb.control(''),
+      loaiHinh: this.fb.control(''),
+      thueBan: this.fb.control(''),
+      danhMuc: this.fb.control(''),
+      tinhThanh: this.fb.control(''),
+      quanHuyen: this.fb.control(''),
+      xaPhuong: this.fb.control(''),
+    })
+
   }
 
   onFileSelected(event: any) {
@@ -33,6 +50,9 @@ export class PostUpComponent implements OnInit {
 
   // get filename to put in database
   getfilename() {
+
+    console.log(this.postForm.get('isCangoc')?.value);
+
     alert(this.arrImg.length)
     this.arrImg.forEach((arr:any) => {
       alert(arr)
@@ -42,14 +62,19 @@ export class PostUpComponent implements OnInit {
     let x = document.getElementsByName('tinh-trang');
     x.forEach((a:any) => {
       if(a.checked === true){
-        this.trangthai = a.value;
+        this.loaiHinh = a.value;
       }
     })
 
-    alert(this.trangthai)
+    alert(this.loaiHinh)
+
   }
 
   deleteImage(i: number) {
     this.arrImg.splice(i, 1)
+  }
+
+  submit(postForm: any){
+    console.log(postForm);
   }
 }
