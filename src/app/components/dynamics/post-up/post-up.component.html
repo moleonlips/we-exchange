@@ -1,0 +1,158 @@
+<div class="container-fluid pt-3 pb-3" style="background-color: #ececec">
+     <div class="container" style="background-color: #fff; padding: 10px 20px;">
+          <div class="row p-1">
+               <div class="form-group m-0 col-4" style="padding-left: 0">
+                    <label for="image-prd" class="file-label m-0 col-12">
+                         <div class="s6ete4 col-12">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="53" height="39" viewBox="0 0 53 39">
+                                   <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                        <g stroke="#FE9900" stroke-width="2" transform="translate(-255 -179)">
+                                             <g transform="translate(132 122)">
+                                                  <path
+                                                       d="M150.631 87.337c-5.755 0-10.42-4.534-10.42-10.127 0-5.593 4.665-10.127 10.42-10.127s10.42 4.534 10.42 10.127c0 5.593-4.665 10.127-10.42 10.127m10.42-24.755l-2.315-4.501h-16.21l-2.316 4.5h-11.579s-4.631 0-4.631 4.502v22.505c0 4.5 4.631 4.5 4.631 4.5h41.684s4.631 0 4.631-4.5V67.083c0-4.501-4.631-4.501-4.631-4.501h-9.263z">
+                                                  </path>
+                                             </g>
+                                        </g>
+                                   </g>
+                              </svg>
+                              <span class="ffyigpx">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 21">
+                                        <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                             <g fill="#FE9900" transform="translate(-161 -428)">
+                                                  <g transform="translate(132 398)">
+                                                       <g transform="translate(16.648 17.048)">
+                                                            <g transform="rotate(-180 16.142 16.838)">
+                                                                 <rect width="2.643" height="19.82" x="8.588" y="0"
+                                                                      rx="1.321"></rect>
+                                                                 <path d="M9.91 0c.73 0 1.321.592 1.321 1.321v17.177a1.321 1.321 0 01-2.643 0V1.321C8.588.591 9.18 0 9.91 0z"
+                                                                      transform="rotate(90 9.91 9.91)"></path>
+                                                            </g>
+                                                       </g>
+                                                  </g>
+                                             </g>
+                                        </g>
+                                   </svg>
+                              </span>
+                         </div>
+                    </label>
+                    <input id="image-prd" (change)="onFileSelected($event)" class="form-control-file" hidden type="file"
+                         name="" multiple="multiple">
+                    <h6><label for="my-input">HÌNH ẢNH SẢN PHẨM:</label></h6>
+                    <div class="col-12">
+                         <div class="row">
+                              <div class="col-4 p-1 img-item text-center" *ngFor="let item of arrImg, let i = index"
+                                   style="background-color: #fff;">
+                                   <img class="" src="{{baseUrlImg}}{{item}}" alt="image" height="120px"
+                                        accept="image/*">
+                                   <button class="btn-del-img" (click)="deleteImage(i)" title="Xóa ảnh này">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                   </button>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+
+               <div class="col-8">
+                    <!-- other input goes here! -->
+                    <!-- danh mục bất động sản -->
+                    <div class="form-group">
+                         <label for="category">Danh mục tin đăng</label>
+                         <select id="category" class="form-control" name="">
+                              <option selected disabled="disabled">Danh mục tin đăng</option>
+                              <option value="Căn hộ/chung cư">Căn hộ/chung cư</option>
+                              <!-- more options -->
+                         </select>
+                    </div>
+
+                    <!-- cần bán / cho thuê -->
+                    <div class="form-group">
+                         <label for="" class="col-12 p-0 tit-label">Loại hình bất động sản</label>
+                         <input type="radio" value="Cần bán" name="loai-hinh" id="can-ban" class="rdb-tinhtrang" hidden>
+                         <label for="can-ban" class="label-radio">Cần bán</label>
+
+                         <input type="radio" value="Cho thuê" name="loai-hinh" id="cho-thue" class="rdb-tinhtrang"
+                              hidden>
+                         <label for="cho-thue" class="label-radio">Cho thuê</label>
+                    </div>
+
+                    <!-- address zone -->
+                    <div class="col-12">
+                         <div class="row">
+                              <div class="col-4 p-0 pr-2">
+                                   <div class="form-group">
+                                        <label for="province">Tỉnh / thành phố</label>
+                                        <select id="province" class="form-control" name="">
+                                             <option selected disabled="disabled">Tỉnh / thành phố</option>
+                                             <option value="Hà Nội">Hà Nội</option>
+                                             <!-- more options -->
+                                        </select>
+                                   </div>
+                              </div>
+                              <div class="col-4 p-0 pr-2">
+                                   <div class="form-group">
+                                        <label for="district">Quận / huyện</label>
+                                        <select id="district" class="form-control" name="">
+                                             <option selected disabled="disabled">Quận / huyện</option>
+                                             <option value="Hà Nội">Hà Nội</option>
+                                             <!-- more options -->
+                                        </select>
+                                   </div>
+                              </div>
+                              <div class="col-4 p-0 pr-2">
+                                   <div class="form-group">
+                                        <label for="phuong">Xã / phường</label>
+                                        <select id="phuong" class="form-control" name="">
+                                             <option selected disabled="disabled">Xã / phường</option>
+                                             <option value="Hà Nội">Hà Nội</option>
+                                             <!-- more options -->
+                                        </select>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <!-- Thông tin chi tiết -->
+                    <h6>Thông tin chi tiết</h6>
+                    <div class="form-group">
+                         <label for="" class="col-12 p-0 tit-label">Tình trạng bất động sản</label>
+                         <input type="radio" value="Đã bàn giao" name="tinh-trang" id="da-ban-giao"
+                              class="rdb-tinhtrang" hidden>
+                         <label for="da-ban-giao" class="label-radio">Đã bàn giao</label>
+
+                         <input type="radio" value="Chưa bàn giao" name="tinh-trang" id="chua-ban-giao"
+                              class="rdb-tinhtrang" hidden>
+                         <label for="chua-ban-giao" class="label-radio">Chưa bàn giao</label>
+                    </div>
+                    <div class="col-12">
+                         <div class="row">
+                              <div class="col-4 p-0 pr-2">
+                                   <label for="loai-hinh" class="ctn-input col-12">
+                                        <input class="txt-input" type="text" id="loai-hinh">
+                                        <label class="lbl-input" for="loai-hinh">Loại hình căn hộ</label>
+                                   </label>
+                              </div>
+
+                              <div class="col-4 p-0 pr-2">
+                                   <label for="so-phong" class="ctn-input col-12">
+                                        <input class="txt-input" type="text" id="so-phong">
+                                        <label class="lbl-input" for="so-phong">Số phòng ngủ</label>
+                                   </label>
+                              </div>
+
+                              <div class="col-4 p-0 pr-2">
+                                   <label for="huong-bcong" class="ctn-input col-12">
+                                        <input class="txt-input" type="text" id="huong-bcong">
+                                        <label class="lbl-input" for="huong-bcong">Hướng ban công</label>
+                                   </label>
+                              </div>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+
+          <button class="btn btn-danger" (click)="getfilename()">
+               Update
+          </button>
+     </div>
+</div>

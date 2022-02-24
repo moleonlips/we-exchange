@@ -1,0 +1,18 @@
+<div class="p-3">
+     <input class="form-control" type="text" [(ngModel)]="myinput" (keyup)="enter($event)">
+     <h4>the array:
+          <span *ngFor="let item of myArr">
+               {{item}}
+          </span>
+     </h4>
+
+     <div>
+          {{
+          result | json
+          }}
+     </div>
+
+     <button class="btn btn-danger" (click)="getObj()">
+          get the obj
+     </button>
+</div>

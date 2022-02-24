@@ -1,0 +1,15 @@
+.link-icons {
+     height: 50px;
+     width: 50px;
+}
+.com-info{
+     border-top: 1px solid #888;
+     padding-top: 20px
+}
+.com-info p {
+     text-align: center;
+     line-height: 16px;
+     color: #999;
+     font-style: italic;
+     font-size: .9em;
+}

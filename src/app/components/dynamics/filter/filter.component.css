@@ -1,0 +1,105 @@
+
+.bread-crumb {
+     font-size: .9em;
+}
+
+.view-mode-list {
+     background-image: url(https://static.chotot.com/storage/chotot-icons/svg/list.svg);
+     background-repeat: no-repeat;
+     background-position: center;
+     height: 100%;
+     width: 40px;
+}
+.view-mode-grid {
+     background-image: url(https://static.chotot.com/storage/chotot-icons/svg/grid.svg);
+     background-repeat: no-repeat;
+     background-position: center;
+     height: 100%;
+     width: 40px;
+}
+.btn-viewmode {
+     border: none;
+     background-color: unset;
+     outline: none;
+     cursor: pointer;
+}
+
+.order-filter-item {
+     cursor: pointer;
+     color: #888;
+     font-weight: bold;
+}
+
+.active {
+     color: #333;
+     border-bottom: 2px solid rgb(255, 238, 0);
+}
+
+.adv-sort {
+     flex: 1;
+     border-left: 1px solid #ccc;
+     border-right: 1px solid #ccc;
+     position: relative;
+}
+.sort-item {
+     position: absolute;
+     list-style: none;
+     background-color: #fff;
+     z-index: 1;
+     top: 100%;
+     left: -1px;
+     right: -1px;
+     display: none;
+}
+
+.sort-item li:first-child {
+     border: 1px solid #ccc;
+}
+
+.sort-item li {
+     line-height: 20px;
+     border: 1px solid #ccc;
+     padding: 10px;
+     border-top: unset;
+     cursor: pointer;
+}
+
+.adv-sort:hover .sort-item{
+     display: block
+}
+
+.detail-info {
+     line-height: 15px;
+     font-weight: bold;
+     font-size: 13px;
+}
+.detail-size{
+     color: #777;
+     font-size: .9em;
+}
+.detail-price {
+     color: red;
+}
+.detail-title{
+     color: #333;
+}
+
+.prd-item {
+     border-bottom: 1px solid #ccc;
+}
+
+.prd-item img {
+     height: 133px
+}
+
+.prd-item:hover {
+     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.527);
+}
+.detail-author{
+     color: #999;
+     font-size: .95em;
+}
+a {
+     text-decoration:none;
+     color: unset
+}

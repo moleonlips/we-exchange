@@ -1,0 +1,271 @@
+<div class="container-fluid p-0 pb-3" style="background-color: rgb(236, 236, 236)">
+     <div class="container pt-3">
+          <div class="bread-crumb pb-3">
+               <a [routerLink]="[ '/' ]">Home</a> \ <a [routerLink]="[ '/filter' ]">{{thisPage}}</a>
+          </div>
+          <h5>Thuê căn hộ chung cư Quận 1</h5>
+     </div>
+
+     <div class="container">
+          <div class="order-filte row col-12 pr-0">
+               <div class="col-8" style="background-color: #fff">
+                    <div class="row">
+                         <div class="order-filter-info col-8">
+                              <div class="row p-0">
+                                   <div (click)="activeFilter($event)" class="order-filter-item active col-4 p-2">Tất cả</div>
+                                   <div (click)="activeFilter($event)" class="order-filter-item col-4 p-2">Cá nhân</div>
+                                   <div (click)="activeFilter($event)" class="order-filter-item col-4 p-2">Môi giới</div>
+                              </div>
+                         </div>
+                         <div class="order-filter-sort col-4">
+                              <div class="row justify-content-end">
+                                   <div class="adv-sort p-2">
+                                        {{defaultOrder}} <i class="fa-solid fa-angle-down"></i>
+                                        <ul class="sort-item list">
+                                             <li (click)="sortBy($event)">Tin liên quan trước</li>
+                                             <li (click)="sortBy($event)">Tin mới trước</li>
+                                             <li (click)="sortBy($event)">Giá thấp trước</li>
+                                        </ul>
+                                   </div>
+                                   <div>
+                                        <button (click)="changeViewMode()" *ngIf="viewMode" class="btn-viewmode view-mode-list" title="Xem dạng danh sách"></button>
+                                        <button (click)="changeViewMode()" *ngIf="!viewMode" class="btn-viewmode view-mode-grid" title="Xem dạng lưới"></button>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="row mt-2 pb-2">
+                         <!-- view mode list -->
+                         <div class="col-12" *ngIf="viewMode">
+                              <div class="row">
+
+                                   <!-- loop at here -->
+                                   <div class="col-12 mb-2">
+                                        <a href="">
+                                             <div class="row prd-item p-2">
+                                                  <div class="col-3 p-0">
+                                                       <img src="../../../../assets/img/products/room-2.jpg" class="col-12 p-0" alt="">
+                                                  </div>
+                                                  <div class="detail-info p-2">
+                                                       <p class="detail-title">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                       <p class="detail-size">25m<sup>2</sup> - 1PN</p>
+                                                       <p class="detail-price">4,9 triệu / tháng</p>
+                                                       <p class="detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                                  </div>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-12 mb-2">
+                                        <a href="">
+                                             <div class="row prd-item p-2">
+                                                  <div class="col-3 p-0">
+                                                       <img src="../../../../assets/img/products/room.jpg" class="col-12 p-0" alt="">
+                                                  </div>
+                                                  <div class="detail-info p-2">
+                                                       <p class="detail-title">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                       <p class="detail-size">25m<sup>2</sup> - 1PN</p>
+                                                       <p class="detail-price">4,9 triệu / tháng</p>
+                                                       <p class="detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                                  </div>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-12 mb-2">
+                                        <a href="">
+                                             <div class="row prd-item p-2">
+                                                  <div class="col-3 p-0">
+                                                       <img src="../../../../assets/img/products/room-2.jpg" class="col-12 p-0" alt="">
+                                                  </div>
+                                                  <div class="detail-info p-2">
+                                                       <p class="detail-title">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                       <p class="detail-size">25m<sup>2</sup> - 1PN</p>
+                                                       <p class="detail-price">4,9 triệu / tháng</p>
+                                                       <p class="detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                                  </div>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-12 mb-2">
+                                        <a href="">
+                                             <div class="row prd-item p-2">
+                                                  <div class="col-3 p-0">
+                                                       <img src="../../../../assets/img/products/room.jpg" class="col-12 p-0" alt="">
+                                                  </div>
+                                                  <div class="detail-info p-2">
+                                                       <p class="detail-title">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                       <p class="detail-size">25m<sup>2</sup> - 1PN</p>
+                                                       <p class="detail-price">4,9 triệu / tháng</p>
+                                                       <p class="detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                                  </div>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-12 mb-2">
+                                        <a href="">
+                                             <div class="row prd-item p-2">
+                                                  <div class="col-3 p-0">
+                                                       <img src="../../../../assets/img/products/room-2.jpg" class="col-12 p-0" alt="">
+                                                  </div>
+                                                  <div class="detail-info p-2">
+                                                       <p class="detail-title">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                       <p class="detail-size">25m<sup>2</sup> - 1PN</p>
+                                                       <p class="detail-price">4,9 triệu / tháng</p>
+                                                       <p class="detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                                  </div>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-12 mb-2">
+                                        <a href="">
+                                             <div class="row prd-item p-2">
+                                                  <div class="col-3 p-0">
+                                                       <img src="../../../../assets/img/products/room.jpg" class="col-12 p-0" alt="">
+                                                  </div>
+                                                  <div class="detail-info p-2">
+                                                       <p class="detail-title">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                       <p class="detail-size">25m<sup>2</sup> - 1PN</p>
+                                                       <p class="detail-price">4,9 triệu / tháng</p>
+                                                       <p class="detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                                  </div>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-12 mb-2">
+                                        <a href="">
+                                             <div class="row prd-item p-2">
+                                                  <div class="col-3 p-0">
+                                                       <img src="../../../../assets/img/products/room.jpg" class="col-12 p-0" alt="">
+                                                  </div>
+                                                  <div class="detail-info p-2">
+                                                       <p class="detail-title">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                       <p class="detail-size">25m<sup>2</sup> - 1PN</p>
+                                                       <p class="detail-price">4,9 triệu / tháng</p>
+                                                       <p class="detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                                  </div>
+                                             </div>
+                                        </a>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <!-- view mode grid -->
+                         <div class="col-12" *ngIf="!viewMode">
+                              <div class="row">
+                                   <!-- item -->
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room-2.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room-2.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room-2.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                                   <div class="col-4 prd-item pt-3">
+                                        <a href="">
+                                             <div class="row detail-info">
+                                                  <img src="../../../../assets/img/products/room.jpg" class="col-12" alt="">
+                                                  <p class="col-12 detail-title mt-2">Căn hộ full nt Q1, Kí tặng 5 triệu</p>
+                                                  <p class="col-12 detail-size">25m<sup>2</sup> - 1PN</p>
+                                                  <p class="col-12 detail-price">4,9 triệu / tháng</p>
+                                                  <p class="col-12 detail-author">Môi giới - Tin ưu tiên - Phường Cô Giang</p>
+                                             </div>
+                                        </a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               
+               <!-- banner quang cao -->
+               <div class="ads-zone col-4 p-0 pl-3">
+                    <img src="../../../../assets/img/banner/banner-small.gif" class="col-12" alt="">
+                    <img src="../../../../assets/img/banner/bat-dong-san.jpg" class="col-12 mt-3" alt="">
+               </div>
+          </div>
+     </div>
+</div>
+
+<script>
+     console.log(document.querySelectorAll('.order-filter-item'));
+     
+</script>

@@ -1,0 +1,61 @@
+<div class="container pt-3">
+     <div class="bread-crumb pb-3">
+          <a [routerLink]="[ '/' ]">Home</a> \ <a [routerLink]="[ '/price-chart' ]">{{thisPage}}</a>
+     </div>
+     <h5>Giá bất động sản cập nhật tháng {{thisMonth}}/{{thisYear}}</h5>
+     <p class="pl-5 pr-5 pt-3">
+          <img src="../../../../assets/img/slider/market_price.jpg" class="col-12 p-0" alt="">
+     </p>
+</div>
+
+<div class="col-12 p-0 pt-3 pb-3" style="background-color: rgb(238, 238, 238)">
+     <div class="container" style="background-color: rgb(255, 255, 255)">
+          <div class="row flex-wrap justify-content-center p-2">
+               <div class="col-4 p-2">
+                    <select name="" id="" class="form-control col-12 p-0">
+                         <option value="">Thành phố</option>
+                         <option value="">TP Hồ Chí Minh</option>
+                         <option value="">Hà Nội</option>
+                    </select>
+               </div>
+               <div class="col-4 p-2">
+                    <select name="" id="" class="form-control col-12 p-0">
+                         <option value="">Quận/huyện</option>
+                         <option value="">...</option>
+                         <option value="">...</option>
+                    </select>
+               </div>
+               <div class="col-4 p-2">
+                    <select name="" id="" class="form-control col-12 p-0">
+                         <option value="">Loại hình bất động sản</option>
+                         <option value="">Nhà ở</option>
+                         <option value="">Căn hộ / Chung cư</option>
+                    </select>
+               </div>
+               
+               <div class="col-4 p-2">
+                    <button class="col-12 btn btn-update">
+                         Xem ngay
+                    </button>
+               </div>
+          </div>
+     </div>
+     <br>
+     <div class="container" style="background-color: #fff;">
+          <h6 class="p-1 pt-3 pb-3">Tham khảo giá bất động sản Thành phố Hồ Chí Minh</h6>
+          <div class="row p-1">
+               <a *ngFor="let item of locations, let i = index" href="/{{i}}" class="col-2" title="{{item}}">
+                    > {{item | limitString:16}}
+               </a>
+          </div>
+     </div>
+     <br>
+     <div class="container" style="background-color: #fff;">
+          <h6 class="p-1 pt-3 pb-3">Tham khảo giá bất động sản Thành phố Hà Nội</h6>
+          <div class="row p-1">
+               <a *ngFor="let item of locations, let i = index" href="/{{i}}" class="col-2" title="{{item}}">
+                    > {{item | limitString:16}}
+               </a>
+          </div>
+     </div>
+</div>
