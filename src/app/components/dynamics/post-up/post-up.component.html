@@ -1,6 +1,6 @@
 <div class="container-fluid pt-3 pb-3" style="background-color: #ececec">
      <div class="container" style="background-color: #fff; padding: 10px 20px;">
-          <div class="row p-1">
+          <form [formGroup]="postForm" class="row p-1" (ngSubmit)="submit(postForm.value)">
                <div class="form-group m-0 col-4" style="padding-left: 0">
                     <label for="image-prd" class="file-label m-0 col-12">
                          <div class="s6ete4 col-12">
@@ -53,27 +53,33 @@
                </div>
 
                <div class="col-8">
-                    <!-- other input goes here! -->
-                    <!-- danh mục bất động sản -->
+                    
+                    <!-- this field was done -->
                     <div class="form-group">
                          <label for="category">Danh mục tin đăng</label>
-                         <select id="category" class="form-control" name="">
+                         <select id="category" class="form-control" name="" formControlName="danhMuc">
                               <option selected disabled="disabled">Danh mục tin đăng</option>
                               <option value="Căn hộ/chung cư">Căn hộ/chung cư</option>
+                              <option value="Nhà ở">Nhà ở</option>
+                              <option value="Đất nền">Đất nền</option>
+                              <option value="Văn phòng, cửa hàng">Văn phòng, cửa hàng</option>
+                              <option value="Nhà trọ">Nhà trọ</option>
                               <!-- more options -->
                          </select>
                     </div>
+                    <!-- this field was done -->
 
-                    <!-- cần bán / cho thuê -->
+                    <!-- this field was done -->
                     <div class="form-group">
                          <label for="" class="col-12 p-0 tit-label">Loại hình bất động sản</label>
-                         <input type="radio" value="Cần bán" name="loai-hinh" id="can-ban" class="rdb-tinhtrang" hidden>
+                         <input type="radio" value="Cần bán" name="thueBan" formControlName="thueBan" id="can-ban" class="rdb-tinhtrang" hidden>
                          <label for="can-ban" class="label-radio">Cần bán</label>
 
-                         <input type="radio" value="Cho thuê" name="loai-hinh" id="cho-thue" class="rdb-tinhtrang"
+                         <input type="radio" value="Cho thuê" name="thueBan" formControlName="thueBan" id="cho-thue" class="rdb-tinhtrang"
                               hidden>
                          <label for="cho-thue" class="label-radio">Cho thuê</label>
                     </div>
+                    <!-- this field was done -->
 
                     <!-- address zone -->
                     <div class="col-12">
@@ -81,9 +87,13 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="province">Tỉnh / thành phố</label>
-                                        <select id="province" class="form-control" name="">
+                                        <select formControlName="tinhThanh" id="province" class="form-control" name="">
                                              <option selected disabled="disabled">Tỉnh / thành phố</option>
                                              <option value="Hà Nội">Hà Nội</option>
+                                             <option value="Hải Phòng">Hải Phòng</option>
+                                             <option value="Đà Nẵng">Đà Nẵng</option>
+                                             <option value="Tp Hồ Chí Minh">Tp Hồ Chí Minh</option>
+                                             <option value="Cần Thơ">Cần Thơ</option>
                                              <!-- more options -->
                                         </select>
                                    </div>
@@ -91,9 +101,13 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="district">Quận / huyện</label>
-                                        <select id="district" class="form-control" name="">
+                                        <select formControlName="quanHuyen" id="district" class="form-control" name="">
                                              <option selected disabled="disabled">Quận / huyện</option>
-                                             <option value="Hà Nội">Hà Nội</option>
+                                             <option value="Yên Mĩ">Yên Mĩ</option>
+                                             <option value="Văn Giang">Văn Giang</option>
+                                             <option value="Khoái Châu">Khoái Châu</option>
+                                             <option value="Mĩ Hào">Mĩ Hào</option>
+                                             <option value="Tp Hưng Yên">Tp Hưng Yên</option>
                                              <!-- more options -->
                                         </select>
                                    </div>
@@ -101,9 +115,12 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="phuong">Xã / phường</label>
-                                        <select id="phuong" class="form-control" name="">
+                                        <select formControlName="xaPhuong" id="phuong" class="form-control" name="">
                                              <option selected disabled="disabled">Xã / phường</option>
-                                             <option value="Hà Nội">Hà Nội</option>
+                                             <option value="Liên Nghĩa">Liên Nghĩa</option>
+                                             <option value="Cửu Cao">Cửu Cao</option>
+                                             <option value="Xuân Quan">Xuân Quan</option>
+                                             <option value="TT Văn Giang">TT Văn Giang</option>
                                              <!-- more options -->
                                         </select>
                                    </div>
@@ -111,23 +128,27 @@
                          </div>
                     </div>
 
-                    <!-- Thông tin chi tiết -->
+
+                    <!-- this field was done -->
                     <h6>Thông tin chi tiết</h6>
                     <div class="form-group">
                          <label for="" class="col-12 p-0 tit-label">Tình trạng bất động sản</label>
-                         <input type="radio" value="Đã bàn giao" name="tinh-trang" id="da-ban-giao"
+                         <input formControlName="tinhTrang" type="radio" value="Đã bàn giao" name="tinhTrang" id="da-ban-giao"
                               class="rdb-tinhtrang" hidden>
                          <label for="da-ban-giao" class="label-radio">Đã bàn giao</label>
 
-                         <input type="radio" value="Chưa bàn giao" name="tinh-trang" id="chua-ban-giao"
+                         <input formControlName="tinhTrang" type="radio" value="Chưa bàn giao" name="tinhTrang" id="chua-ban-giao"
                               class="rdb-tinhtrang" hidden>
                          <label for="chua-ban-giao" class="label-radio">Chưa bàn giao</label>
                     </div>
+                    <!-- this field was done -->
+
+
                     <div class="col-12">
                          <div class="row">
                               <div class="col-12 p-0 pr-2">
                                    <label for="loai-hinh" class="ctn-input col-12">
-                                        <input class="txt-input" type="text" id="loai-hinh">
+                                        <input formControlName="loaiHinh" class="txt-input" type="text" id="loai-hinh">
                                         <label class="lbl-input" for="loai-hinh">Loại hình căn hộ</label>
                                    </label>
                               </div>
@@ -190,9 +211,13 @@
                     </div>
 
                     <div class="form-group">
-                         <input id="can-goc" type="checkbox" class="check-box-inp">
+                         <input formControlName="canGoc" id="can-goc" type="checkbox" class="check-box-inp">
                          <label for="can-goc">Căn góc</label>
                     </div>
+
+                    <button class="btn btn-primary" type="submit">
+                         get
+                    </button>
 
                     <h6>Diện tích và giá</h6>
                     <div class="col-12">
@@ -259,6 +284,10 @@
                          </div>
                     </div>
                </div>
+<<<<<<< HEAD
           </div>
+=======
+          </form>
+>>>>>>> c6457be0355dae250d86916399033cd3c75cd18e
      </div>
 </div>

@@ -38,6 +38,7 @@ import { TestComponent } from './components/dynamics/post-up/test/test.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
