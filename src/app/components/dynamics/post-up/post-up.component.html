@@ -125,29 +125,139 @@
                     </div>
                     <div class="col-12">
                          <div class="row">
-                              <div class="col-4 p-0 pr-2">
+                              <div class="col-12 p-0 pr-2">
                                    <label for="loai-hinh" class="ctn-input col-12">
                                         <input class="txt-input" type="text" id="loai-hinh">
                                         <label class="lbl-input" for="loai-hinh">Loại hình căn hộ</label>
                                    </label>
                               </div>
 
-                              <div class="col-4 p-0 pr-2">
+                              <div class="col-6 p-0 pr-2">
                                    <label for="so-phong" class="ctn-input col-12">
                                         <input class="txt-input" type="text" id="so-phong">
                                         <label class="lbl-input" for="so-phong">Số phòng ngủ</label>
                                    </label>
                               </div>
 
-                              <div class="col-4 p-0 pr-2">
+                              <div class="col-6 p-0 pr-2">
+                                   <label for="so-wc" class="ctn-input col-12">
+                                        <input class="txt-input" type="text" id="so-wc">
+                                        <label class="lbl-input" for="so-wc">Số phòng vệ sinh</label>
+                                   </label>
+                              </div>
+
+                              <div class="col-6 p-0 pr-2">
                                    <label for="huong-bcong" class="ctn-input col-12">
                                         <input class="txt-input" type="text" id="huong-bcong">
                                         <label class="lbl-input" for="huong-bcong">Hướng ban công</label>
                                    </label>
                               </div>
+                              <div class="col-6 p-0 pr-2">
+                                   <label for="huong-cua-chinh" class="ctn-input col-12">
+                                        <input class="txt-input" type="text" id="huong-cua-chinh">
+                                        <label class="lbl-input" for="huong-cua-chinh">Hướng cửa chính</label>
+                                   </label>
+                              </div>
                          </div>
                     </div>
 
+                    <h6>Thông tin khác</h6>
+
+                    <div class="col-12">
+                         <div class="row">
+                              <div class="form-group col-6 p-0 pr-2">
+                                   <label for="category">Giấy tờ pháp lí</label>
+                                   <select id="category" class="form-control" name="">
+                                        <option selected disabled="disabled">Giấy tờ pháp lí</option>
+                                        <option value="Căn hộ/chung cư">Đã có sổ</option>
+                                        <option value="Căn hộ/chung cư">Đang chờ sổ</option>
+                                        <option value="Căn hộ/chung cư">Giấy tờ khác</option>
+                                        <!-- more options -->
+                                   </select>
+                              </div>
+                              <div class="form-group col-6 p-0 pr-2">
+                                   <label for="category">Giấy tờ pháp lí</label>
+                                   <select id="category" class="form-control" name="">
+                                        <option selected disabled="disabled">Giấy tờ pháp lí</option>
+                                        <option value="Căn hộ/chung cư">Đã có sổ</option>
+                                        <option value="Căn hộ/chung cư">Đang chờ sổ</option>
+                                        <option value="Căn hộ/chung cư">Giấy tờ khác</option>
+                                        <!-- more options -->
+                                   </select>
+                              </div>
+                         </div>
+
+                    </div>
+
+                    <div class="form-group">
+                         <input id="can-goc" type="checkbox" class="check-box-inp">
+                         <label for="can-goc">Căn góc</label>
+                    </div>
+
+                    <h6>Diện tích và giá</h6>
+                    <div class="col-12">
+                         <div class="row">
+                              <div class="col-12 p-0 pr-2">
+                                   <label for="dien-tich" class="ctn-input col-12">
+                                        <input class="txt-input" type="text" id="dien-tich">
+                                        <label class="lbl-input" for="dien-tich">Diện tích</label>
+                                   </label>
+                              </div>
+
+                              <div class="col-12 p-0 pr-2">
+                                   <label for="gia-ban" class="ctn-input col-12">
+                                        <input class="txt-input" type="tel" id="gia-ban">
+                                        <label class="lbl-input" for="gia-ban">Giá bán</label>
+                                   </label>
+                              </div>
+
+                              <div class="col-12 p-0 pr-2">
+                                   <label for="tien-coc" class="ctn-input col-12">
+                                        <input class="txt-input" type="tel" id="tien-coc">
+                                        <label class="lbl-input" for="tien-coc">Số tiền cọc</label>
+                                   </label>
+                              </div>
+                         </div>
+                    </div>
+
+                    <h6 class="mt-2">Tiêu đề tin đăng và mô tả chi tiết</h6>
+                    <div class="col-12">
+                         <div class="row">
+                              <div class="col-12 p-0 pr-2">
+                                   <label for="tieu-de" class="ctn-input col-12">
+                                        <input class="txt-input" type="text" id="tieu-de">
+                                        <label class="lbl-input" for="tieu-de">Tiêu đề tin</label>
+                                   </label>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="form-group pr-2">
+                         <label for="mo-ta">Mô tả chi tiết</label>
+                         <textarea id="mo-ta" class="form-control" name="" rows="5"></textarea>
+                    </div>
+
+                    <h6 class="mt-2">Bạn là</h6>
+                    <div class="form-group">
+                         <input type="radio" value="Môi giới" name="canhan-moigioi" id="moi-gioi"
+                              class="rdb-tinhtrang" hidden>
+                         <label for="moi-gioi" class="label-radio">Môi giới</label>
+
+                         <input type="radio" value="Cá nhân" name="canhan-moigioi" id="ca-nhan"
+                              class="rdb-tinhtrang" hidden>
+                         <label for="ca-nhan" class="label-radio">Cá nhân</label>
+                    </div>
+
+                    <div class="col-12">
+                         <div class="row">
+                              <div class="col-6 p-0 pr-2">
+                                   <button class="col-12 btn btn-primary">Xem trước</button>
+                              </div>
+                              <div class="col-6 p-0 pr-2">
+                                   <button class="col-12 btn btn-success">Đăng tin</button>
+                              </div>
+                         </div>
+                    </div>
                </div>
           </div>
 

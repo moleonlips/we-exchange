@@ -63,3 +63,17 @@
 .tit-label {
      color: #999;
 }
+
+.check-box-inp {
+     height: 30px;
+     width: 30px;
+     color: orange;
+     float: left;
+}
+
+.check-box-inp + label {
+     line-height: 30px;
+     display: block;
+     margin-left: 40px;
+     font-weight: bold;
+}
