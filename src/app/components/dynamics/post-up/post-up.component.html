@@ -36,7 +36,7 @@
                          </div>
                     </label>
                     <input id="image-prd" (change)="onFileSelected($event)" class="form-control-file" hidden type="file"
-                         name="" multiple="multiple">
+                         multiple="multiple">
                     <h6><label for="my-input">HÌNH ẢNH SẢN PHẨM:</label></h6>
                     <div class="col-12">
                          <div class="row">
@@ -50,14 +50,23 @@
                               </div>
                          </div>
                     </div>
+
+                    <div>
+                         <h3>Vị trí trên bản đồ</h3>
+                         <agm-map [latitude]="lat" [longitude]="lng" class="maps-zone"
+                              (mapClick)="onChooseLocation($event)">
+                              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                              <agm-marker [latitude]="20.8761728" [longitude]="106.0288992"></agm-marker>
+                         </agm-map>
+                    </div>
                </div>
 
                <div class="col-8">
-                    
+
                     <!-- this field was done -->
                     <div class="form-group">
                          <label for="category">Danh mục tin đăng</label>
-                         <select id="category" class="form-control" name="" formControlName="danhMuc">
+                         <select id="category" class="form-control" formControlName="danhMuc">
                               <option selected disabled="disabled">Danh mục tin đăng</option>
                               <option value="Căn hộ/chung cư">Căn hộ/chung cư</option>
                               <option value="Nhà ở">Nhà ở</option>
@@ -72,11 +81,12 @@
                     <!-- this field was done -->
                     <div class="form-group">
                          <label for="" class="col-12 p-0 tit-label">Loại hình bất động sản</label>
-                         <input type="radio" value="Cần bán" name="thueBan" formControlName="thueBan" id="can-ban" class="rdb-tinhtrang" hidden>
+                         <input type="radio" value="Cần bán" name="nhuCau" formControlName="nhuCau" id="can-ban"
+                              class="rdb-tinhtrang" hidden>
                          <label for="can-ban" class="label-radio">Cần bán</label>
 
-                         <input type="radio" value="Cho thuê" name="thueBan" formControlName="thueBan" id="cho-thue" class="rdb-tinhtrang"
-                              hidden>
+                         <input type="radio" value="Cho thuê" name="nhuCau" formControlName="nhuCau" id="cho-thue"
+                              class="rdb-tinhtrang" hidden>
                          <label for="cho-thue" class="label-radio">Cho thuê</label>
                     </div>
                     <!-- this field was done -->
@@ -87,7 +97,7 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="province">Tỉnh / thành phố</label>
-                                        <select formControlName="tinhThanh" id="province" class="form-control" name="">
+                                        <select formControlName="tinhThanh" id="province" class="form-control">
                                              <option selected disabled="disabled">Tỉnh / thành phố</option>
                                              <option value="Hà Nội">Hà Nội</option>
                                              <option value="Hải Phòng">Hải Phòng</option>
@@ -101,7 +111,7 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="district">Quận / huyện</label>
-                                        <select formControlName="quanHuyen" id="district" class="form-control" name="">
+                                        <select formControlName="quanHuyen" id="district" class="form-control">
                                              <option selected disabled="disabled">Quận / huyện</option>
                                              <option value="Yên Mĩ">Yên Mĩ</option>
                                              <option value="Văn Giang">Văn Giang</option>
@@ -115,7 +125,7 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="phuong">Xã / phường</label>
-                                        <select formControlName="xaPhuong" id="phuong" class="form-control" name="">
+                                        <select formControlName="xaPhuong" id="phuong" class="form-control">
                                              <option selected disabled="disabled">Xã / phường</option>
                                              <option value="Liên Nghĩa">Liên Nghĩa</option>
                                              <option value="Cửu Cao">Cửu Cao</option>
@@ -133,12 +143,12 @@
                     <h6>Thông tin chi tiết</h6>
                     <div class="form-group">
                          <label for="" class="col-12 p-0 tit-label">Tình trạng bất động sản</label>
-                         <input formControlName="tinhTrang" type="radio" value="Đã bàn giao" name="tinhTrang" id="da-ban-giao"
-                              class="rdb-tinhtrang" hidden>
+                         <input formControlName="tinhTrang" type="radio" value="Đã bàn giao" name="tinhTrang"
+                              id="da-ban-giao" class="rdb-tinhtrang" hidden>
                          <label for="da-ban-giao" class="label-radio">Đã bàn giao</label>
 
-                         <input formControlName="tinhTrang" type="radio" value="Chưa bàn giao" name="tinhTrang" id="chua-ban-giao"
-                              class="rdb-tinhtrang" hidden>
+                         <input formControlName="tinhTrang" type="radio" value="Chưa bàn giao" name="tinhTrang"
+                              id="chua-ban-giao" class="rdb-tinhtrang" hidden>
                          <label for="chua-ban-giao" class="label-radio">Chưa bàn giao</label>
                     </div>
                     <!-- this field was done -->
@@ -155,27 +165,30 @@
 
                               <div class="col-6 p-0 pr-2">
                                    <label for="so-phong" class="ctn-input col-12">
-                                        <input class="txt-input" type="text" id="so-phong">
+                                        <input formControlName="soPhongNgu" class="txt-input" type="number"
+                                             id="so-phong">
                                         <label class="lbl-input" for="so-phong">Số phòng ngủ</label>
                                    </label>
                               </div>
 
                               <div class="col-6 p-0 pr-2">
                                    <label for="so-wc" class="ctn-input col-12">
-                                        <input class="txt-input" type="text" id="so-wc">
+                                        <input formControlName="soPhongVS" class="txt-input" type="number" id="so-wc">
                                         <label class="lbl-input" for="so-wc">Số phòng vệ sinh</label>
                                    </label>
                               </div>
 
                               <div class="col-6 p-0 pr-2">
                                    <label for="huong-bcong" class="ctn-input col-12">
-                                        <input class="txt-input" type="text" id="huong-bcong">
+                                        <input formControlName="huongBanCong" class="txt-input" type="text"
+                                             id="huong-bcong">
                                         <label class="lbl-input" for="huong-bcong">Hướng ban công</label>
                                    </label>
                               </div>
                               <div class="col-6 p-0 pr-2">
                                    <label for="huong-cua-chinh" class="ctn-input col-12">
-                                        <input class="txt-input" type="text" id="huong-cua-chinh">
+                                        <input formControlName="huongCuaChinh" class="txt-input" type="text"
+                                             id="huong-cua-chinh">
                                         <label class="lbl-input" for="huong-cua-chinh">Hướng cửa chính</label>
                                    </label>
                               </div>
@@ -188,21 +201,21 @@
                          <div class="row">
                               <div class="form-group col-6 p-0 pr-2">
                                    <label for="category">Giấy tờ pháp lí</label>
-                                   <select id="category" class="form-control" name="">
+                                   <select formControlName="giayTo" id="category" class="form-control">
                                         <option selected disabled="disabled">Giấy tờ pháp lí</option>
-                                        <option value="Căn hộ/chung cư">Đã có sổ</option>
-                                        <option value="Căn hộ/chung cư">Đang chờ sổ</option>
-                                        <option value="Căn hộ/chung cư">Giấy tờ khác</option>
+                                        <option value="Đã có sổ">Đã có sổ</option>
+                                        <option value="Đang chờ sổ">Đang chờ sổ</option>
+                                        <option value="Giấy tờ khác">Giấy tờ khác</option>
                                         <!-- more options -->
                                    </select>
                               </div>
                               <div class="form-group col-6 p-0 pr-2">
-                                   <label for="category">Giấy tờ pháp lí</label>
-                                   <select id="category" class="form-control" name="">
-                                        <option selected disabled="disabled">Giấy tờ pháp lí</option>
-                                        <option value="Căn hộ/chung cư">Đã có sổ</option>
-                                        <option value="Căn hộ/chung cư">Đang chờ sổ</option>
-                                        <option value="Căn hộ/chung cư">Giấy tờ khác</option>
+                                   <label for="category">Tình trạng nội thất</label>
+                                   <select formControlName="noiThat" id="category" class="form-control">
+                                        <option selected disabled="disabled">Tình trạng nội thất</option>
+                                        <option value="Cao cấp">Cao cấp</option>
+                                        <option value="Đầy đủ">Đầy đủ</option>
+                                        <option value="Nhà trống">Nhà trống</option>
                                         <!-- more options -->
                                    </select>
                               </div>
@@ -215,30 +228,26 @@
                          <label for="can-goc">Căn góc</label>
                     </div>
 
-                    <button class="btn btn-primary" type="submit">
-                         get
-                    </button>
-
                     <h6>Diện tích và giá</h6>
                     <div class="col-12">
                          <div class="row">
                               <div class="col-12 p-0 pr-2">
                                    <label for="dien-tich" class="ctn-input col-12">
-                                        <input class="txt-input" type="text" id="dien-tich">
+                                        <input formControlName="dienTich" class="txt-input" type="text" id="dien-tich">
                                         <label class="lbl-input" for="dien-tich">Diện tích</label>
                                    </label>
                               </div>
 
                               <div class="col-12 p-0 pr-2">
                                    <label for="gia-ban" class="ctn-input col-12">
-                                        <input class="txt-input" type="tel" id="gia-ban">
+                                        <input formControlName="giaBan" class="txt-input" type="tel" id="gia-ban">
                                         <label class="lbl-input" for="gia-ban">Giá bán</label>
                                    </label>
                               </div>
 
                               <div class="col-12 p-0 pr-2">
                                    <label for="tien-coc" class="ctn-input col-12">
-                                        <input class="txt-input" type="tel" id="tien-coc">
+                                        <input formControlName="tienCoc" class="txt-input" type="tel" id="tien-coc">
                                         <label class="lbl-input" for="tien-coc">Số tiền cọc</label>
                                    </label>
                               </div>
@@ -250,7 +259,7 @@
                          <div class="row">
                               <div class="col-12 p-0 pr-2">
                                    <label for="tieu-de" class="ctn-input col-12">
-                                        <input class="txt-input" type="text" id="tieu-de">
+                                        <input formControlName="tieuDe" class="txt-input" type="text" id="tieu-de">
                                         <label class="lbl-input" for="tieu-de">Tiêu đề tin</label>
                                    </label>
                               </div>
@@ -259,27 +268,27 @@
 
                     <div class="form-group pr-2">
                          <label for="mo-ta">Mô tả chi tiết</label>
-                         <textarea id="mo-ta" class="form-control" name="" rows="5"></textarea>
+                         <textarea formControlName="moTa" id="mo-ta" class="form-control" rows="5"></textarea>
                     </div>
 
                     <h6 class="mt-2">Bạn là</h6>
                     <div class="form-group">
-                         <input type="radio" value="Môi giới" name="canhan-moigioi" id="moi-gioi"
-                              class="rdb-tinhtrang" hidden>
+                         <input type="radio" value="Môi giới" formControlName="canhanMoigioi" name="canhanMoigioi"
+                              id="moi-gioi" class="rdb-tinhtrang" hidden>
                          <label for="moi-gioi" class="label-radio">Môi giới</label>
 
-                         <input type="radio" value="Cá nhân" name="canhan-moigioi" id="ca-nhan"
-                              class="rdb-tinhtrang" hidden>
+                         <input type="radio" value="Cá nhân" formControlName="canhanMoigioi" name="canhanMoigioi"
+                              id="ca-nhan" class="rdb-tinhtrang" hidden>
                          <label for="ca-nhan" class="label-radio">Cá nhân</label>
                     </div>
 
                     <div class="col-12">
                          <div class="row">
                               <div class="col-6 p-0 pr-2">
-                                   <button class="col-12 btn btn-primary">Xem trước</button>
+                                   <button class="col-12 btn btn-primary" type="button">Xem trước</button>
                               </div>
                               <div class="col-6 p-0 pr-2">
-                                   <button class="col-12 btn btn-success">Đăng tin</button>
+                                   <button class="col-12 btn btn-success" type="submit">Đăng tin</button>
                               </div>
                          </div>
                     </div>
