@@ -21,6 +21,7 @@ import { PostUpComponent } from './components/dynamics/post-up/post-up.component
 import { TestComponent } from './components/dynamics/post-up/test/test.component';
 
 import { SharedService } from './services/shared/shared.service';
+import { ProductDetailComponent } from './components/dynamics/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SharedService } from './services/shared/shared.service';
     LimitStringPipe,
     FilterComponent,
     PostUpComponent,
-    TestComponent
+    TestComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

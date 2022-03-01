@@ -2,6 +2,7 @@
      <div class="container" style="background-color: #fff; padding: 10px 20px;">
           <form [formGroup]="postForm" class="row p-1" (ngSubmit)="submit(postForm.value)">
                <div class="form-group m-0 col-4" style="padding-left: 0">
+                    <h6><label for="my-input">HÌNH ẢNH SẢN PHẨM:</label></h6>
                     <label for="image-prd" class="file-label m-0 col-12">
                          <div class="s6ete4 col-12">
                               <svg xmlns="http://www.w3.org/2000/svg" width="53" height="39" viewBox="0 0 53 39">
@@ -37,7 +38,6 @@
                     </label>
                     <input id="image-prd" (change)="onFileSelected($event)" class="form-control-file" hidden type="file"
                          multiple="multiple">
-                    <h6><label for="my-input">HÌNH ẢNH SẢN PHẨM:</label></h6>
                     <div class="col-12">
                          <div class="row">
                               <div class="col-4 p-1 img-item text-center" *ngFor="let item of arrImg, let i = index"
@@ -51,8 +51,8 @@
                          </div>
                     </div>
 
-                    <div>
-                         <h3>Vị trí trên bản đồ</h3>
+                    <div class="mt-3">
+                         <h6>Vị trí trên bản đồ</h6>
                          <agm-map [latitude]="lat" [longitude]="lng" class="maps-zone"
                               (mapClick)="onChooseLocation($event)">
                               <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
