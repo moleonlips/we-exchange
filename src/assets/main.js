@@ -23,14 +23,18 @@ setTimeout(() => {
           })
      }
 
-     prevBtn.addEventListener('click', () => {
-          changeImg(-1);
-     })
-     nextBtn.addEventListener('click', () => {
-          changeImg(1);
-     })
+     if(Boolean(prevBtn) === true) {
+          prevBtn.addEventListener('click', () => {
+               changeImg(-1);
+          })
 
-     function changeImg(x) {
+          nextBtn.addEventListener('click', () => {
+               changeImg(1);
+          })
+     }
+
+
+     function changeImg(x) { //quái!!! :))
           let arr = Array.from(detailImages)
           let activeImg = arr.filter(a => a.classList.contains('active'))[0]
           let index = arr.indexOf(activeImg)
@@ -70,14 +74,14 @@ setTimeout(() => {
 
           dots[index].classList.add('active');
      }
-}, 2000);
+}, 2836);
 // end product image details handle
 
 
+// custom form control
 setTimeout(() => {
      let txtInput = document.querySelectorAll('.txt-input');
      txtInput.forEach(item => {
-
           item.addEventListener('focus', (e) => {
                let ctnInput = e.target.parentNode;
                let lblInput = ctnInput.querySelector('.lbl-input')
@@ -94,8 +98,30 @@ setTimeout(() => {
                ctnInput.classList.remove('active');
           })
      })
-}, 100);
+}, 1000);
+// end custom form control
 
+
+setTimeout(() => {
+     let moneys = document.querySelectorAll('.money');
+     moneys.forEach(item => {
+          item.addEventListener('keyup', (e) => {
+               e.target.value = fomatMoney(e.target.value);
+               
+               console.log(e.target.value);
+          })
+     })
+}, 1111);
+
+
+function fomatMoney(str) {
+     let rs = str.split('').filter(i => i !== ',');
+     
+     for(let i = rs.length - 3; i > 0; i-=3) {
+          rs[i] = ',' + rs[i];
+     }
+     return rs.join('');
+}
 
 function viewMoreUserInfo() {
      let viewMoreContainer = document.querySelector('.view-more-container');
@@ -107,6 +133,7 @@ function viewMoreUserInfo() {
 }
 
 
+/// slider handle
 ; (() => {
      let i = 0;
      setInterval(() => {
@@ -126,3 +153,4 @@ function viewMoreUserInfo() {
           }
      }, 3682);
 })()
+/// end slider handle

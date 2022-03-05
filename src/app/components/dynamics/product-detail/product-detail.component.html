@@ -15,7 +15,7 @@
                          </button>
 
                          <!-- loop at here -->
-                         <img class="detail-img" [title]="item" *ngFor="let item of imgs, let i = index"
+                         <img class="detail-img" title="Hình {{i + 1}}" *ngFor="let item of imgs, let i = index"
                               src="../../../../assets/img/details/{{item}}" alt="">
 
                          <!-- next button -->

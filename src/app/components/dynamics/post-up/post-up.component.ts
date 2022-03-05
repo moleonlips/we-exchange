@@ -26,6 +26,10 @@ export class PostUpComponent implements OnInit {
   arrImg:any = []
 
   loaiHinh: string = ''
+
+  gBan = ''
+  tCoc = ''
+
   
   ngOnInit(): void {
     this.postForm = this.fb.group({
@@ -51,7 +55,6 @@ export class PostUpComponent implements OnInit {
       moTa: this.fb.control(''),
       tieuDe: this.fb.control(''),
     })
-
   }
 
   onFileSelected(event: any) {

@@ -239,14 +239,14 @@
 
                               <div class="col-12 p-0 pr-2">
                                    <label for="gia-ban" class="ctn-input col-12">
-                                        <input formControlName="giaBan" class="txt-input" type="tel" id="gia-ban">
+                                        <input [(ngModel)]="gBan" formControlName="giaBan" class="txt-input money" type="tel" id="gia-ban">
                                         <label class="lbl-input" for="gia-ban">Giá bán</label>
                                    </label>
                               </div>
 
                               <div class="col-12 p-0 pr-2">
                                    <label for="tien-coc" class="ctn-input col-12">
-                                        <input formControlName="tienCoc" class="txt-input" type="tel" id="tien-coc">
+                                        <input [(ngModel)]="tCoc" formControlName="tienCoc" class="txt-input money" type="tel" id="tien-coc">
                                         <label class="lbl-input" for="tien-coc">Số tiền cọc</label>
                                    </label>
                               </div>
