@@ -77,7 +77,6 @@ setTimeout(() => {
 }, 2836);
 // end product image details handle
 
-
 // custom form control
 setTimeout(() => {
      let txtInput = document.querySelectorAll('.txt-input');
@@ -107,8 +106,6 @@ setTimeout(() => {
      moneys.forEach(item => {
           item.addEventListener('keyup', (e) => {
                e.target.value = fomatMoney(e.target.value);
-               
-               console.log(e.target.value);
           })
      })
 }, 1111);
@@ -131,6 +128,8 @@ function viewMoreUserInfo() {
           e.stopPropagation();
      })
 }
+
+
 
 
 /// slider handle

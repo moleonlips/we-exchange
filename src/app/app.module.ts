@@ -46,7 +46,7 @@ import { ProductDetailComponent } from './components/dynamics/product-detail/pro
     HttpClientModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCWEwcMFHjwI-YCYcEoGVrgEdGcgbPX0sg'
+      apiKey: 'AIzaSyDnCUhO9s_pDmEoDdypf-KQ-rxp0t5rFHM'
     })
   ],
   providers: [

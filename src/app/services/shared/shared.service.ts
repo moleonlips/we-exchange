@@ -14,6 +14,6 @@ export class SharedService {
       fileData.append('image', filesSelected[i], filesSelected[i].name);
     }
 
-    return this.http.post('https://localhost:44353/api/Products/SaveFile', fileData)
+    return this.http.post('https://localhost:44339/api/Pictures/SaveFile', fileData)
   }
 }

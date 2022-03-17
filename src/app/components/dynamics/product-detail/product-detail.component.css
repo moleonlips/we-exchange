@@ -1,14 +1,14 @@
 .image-container {
-     height: 66vh;
      background-color: #fcca55;
-     padding: 0 10px;
      position: relative;
+     padding: 0 10px;
+     height: 66vh;
 }
 
 .image-container img {
+     display: none;
      height: 100%;
      padding: 0;
-     display: none;
 }
 
 .image-container img.active {
@@ -17,13 +17,13 @@
 
 .image-container button {
      background-color: #29282581;
-     height: 40px;
-     width: 40px;
+     transition: all .5s;
      border-radius: 50%;
      outline: none;
-     border: none;
      color: #fff;
-     transition: all .5s;
+     height: 40px;
+     border: none;
+     width: 40px;
 }
 .image-container button:hover {
      background-color: #292825;
@@ -35,12 +35,12 @@
 }
 
 .range-pst {
+     background: rgba(0, 0, 0, 0.329);
      position: absolute;
      height: 40px;
-     bottom:0;
-     background: rgba(0, 0, 0, 0.329);
-     z-index: 1;
      width: 100%;
+     z-index: 1;
+     bottom:0;
      left: 0;
 }
 
@@ -64,13 +64,14 @@
 }
 
 .visible {
-     opacity: 0;
      transform: all .8s;
+     opacity: 0;
 }
 
 .image-container:hover .visible{
      opacity: 1;
 }
+
 .txt-price{
      color: rgb(216, 40, 40)
 }
@@ -94,16 +95,16 @@
 }
 
 agm-map{
-     width: 100%;
      height: 250px;
+     width: 100%;
 }
 
 .img-avt {
-     width: 50px;
-     height: 50px;
+     border: 2px solid #ccc;
      border-radius: 50%;
      overflow: hidden;
-     border: 2px solid #ccc;
+     height: 50px;
+     width: 50px;
 }
 
 .img-avt img {
@@ -119,4 +120,18 @@ agm-map{
 .btn-viewpage:hover {
      background-color: #fac13d;
      color: #fff;
+}
+.quick-chat-container{
+     overflow-x: auto;
+     width: 100%;
+}
+
+.quick-chat-container span {
+     border: 1px solid #fac13d;
+     margin: 5px;
+     float: left;
+}
+.btn-message{
+     background-color: #faa83d;
+     color: #fff
 }

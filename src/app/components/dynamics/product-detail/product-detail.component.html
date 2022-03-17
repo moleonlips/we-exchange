@@ -164,11 +164,18 @@
                               </div>
                          </div>
 
-
-
+                         <h6 class="mt-3">Chat nhanh với người bán</h6>
+                         <div class="quick-chat-container">
+                              <div style="width: auto; width: 1120px;">
+                                   <span class="btn" (click)="quickChat($event)">Tư vấn cho tôi với!</span>
+                                   <span class="btn" (click)="quickChat($event)">Căn hộ này còn không?</span>
+                                   <span class="btn" (click)="quickChat($event)">Tình trạng giấy tờ thế nào ạ?</span>
+                                   <span class="btn" (click)="quickChat($event)">Tôi có thể trả góp không?</span>
+                                   <span class="btn" (click)="quickChat($event)">Có chỗ đậu xe không?</span>
+                              </div>
+                         </div>
                     </div>
                </div>
-
                <div class="col-4 p-0 pl-3">
                     <!-- vị trí trên bản đồ -->
                     <div class="row">
@@ -200,16 +207,126 @@
                               <a href="https://zalo.me/0375603561" class="mb-1 col-12 btn btn-primary">
                                    <i class="fa-solid fa-circle-z"></i> Zalo
                               </a>
+                              <button class="mb-1 col-12 btn btn-message" (click)="onChat()">Nhắn tin</button>
                          </div>
 
+                         <!-- location on the maps -->
                          <div class="col-12">
-                              <agm-map [latitude]="lat" [longitude]="lng" class="maps-zone">
+                              <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng" class="maps-zone">
                                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
                               </agm-map>
                          </div>
                     </div>
+
+                    <!-- banner ads -->
                     <img class="col-12 p-0 mt-3" src="../../../../assets/img/banner/300x2-adx621d9e9903908.gif" alt="">
+               </div>
+
+               <div class="col-12 mb-2 p-0">
+                    <div class="container-fluid gray-bg p-0">
+                         <div class="container bg-white p-0">
+                              <h6 class="pt-3">Các sản phẩm tương tự</h6>
+                                   <div class="d-flex align-items-center pb-3">
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                    
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                    
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                    
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                    
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                                   </div>
+                                   <div class="col-12 p-0">
+                                        <a href="#" class="cate-detail">Xem thêm 250.890 tin đăng mua bán >></a>
+                                   </div>
+                         </div>
+                    </div>
                </div>
           </div>
      </div>
+</div>
+
+<div *ngIf="isOpened" class="box-chat">
+     <!-- headding box chat -->
+     <div class="head-bxc">
+          <span>
+               <img src="../../../../assets/img/avt.png" alt="">
+               <b>Ly Tuan Duc</b>
+          </span>
+          <span class="kf">
+               <button>-</button>
+               <button (click)="onCloseBoxChat()">x</button>
+          </span>
+     </div>
+
+     <div class="body-bxc">
+          <div *ngFor="let item of messages" [class]="item.auth? 'is-auth': ''">
+               <span title="{{item.date | date: 'hh:mm:ss - dd/MM/yyyy'}}">
+                    {{item.content}}
+               </span>
+          </div>
+     </div>
+
+     <form class="input-bxc" [formGroup]="frmChatting" (ngSubmit)="onSendMessage(frmChatting.value)">
+          <input formControlName="content" type="text" placeholder="Enter your message...">
+          <button class="btn" type="submit">
+               <i class="fas fa-paper-plane"></i>
+          </button>
+     </form>
 </div>
