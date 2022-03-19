@@ -26,4 +26,5 @@ export class Product {
      postOn!: Date
      type!: string
      legality!: string
+     active!: boolean
 }

@@ -78,27 +78,65 @@ setTimeout(() => {
 // end product image details handle
 
 // custom form control
-setTimeout(() => {
-     let txtInput = document.querySelectorAll('.txt-input');
-     txtInput.forEach(item => {
-          item.addEventListener('focus', (e) => {
-               let ctnInput = e.target.parentNode;
-               let lblInput = ctnInput.querySelector('.lbl-input')
-               ctnInput.classList.add('active');
-               lblInput.classList.add('active');
-          })
-
-          item.addEventListener('blur', (e) => {
-               let ctnInput = e.target.parentNode;
-               let lblInput = ctnInput.querySelector('.lbl-input')
-               if (!item.value) {
-                    lblInput.classList.remove('active');
-               }
-               ctnInput.classList.remove('active');
-          })
+setInterval(() => {
+     let promise = new Promise((resolve, reject) => {
+          let txtInput = document.querySelectorAll('.txt-input');
+          if(txtInput.length > 0){
+               resolve(txtInput);
+          }
      })
+     promise
+          .then((txtInput)=>{
+               txtInput.forEach(item => {
+                    item.addEventListener('focus', (e) => {
+                         let ctnInput = e.target.parentNode;
+                         let lblInput = ctnInput.querySelector('.lbl-input')
+                         ctnInput.classList.add('active');
+                         lblInput.classList.add('active');
+                    })
+          
+                    item.addEventListener('blur', (e) => {
+                         let ctnInput = e.target.parentNode;
+                         let lblInput = ctnInput.querySelector('.lbl-input')
+                         if (!item.value) {
+                              lblInput.classList.remove('active');
+                         }
+                         ctnInput.classList.remove('active');
+                    })
+               })
+          })
 }, 1000);
 // end custom form control
+
+
+// // form control backup
+// setTimeout(() => {
+//      let promise = new Promise((resolve, reject) => {
+          
+//           resolve()
+//      })
+
+//      let txtInput = document.querySelectorAll('.txt-input');
+//      txtInput.forEach(item => {
+//           item.addEventListener('focus', (e) => {
+//                let ctnInput = e.target.parentNode;
+//                let lblInput = ctnInput.querySelector('.lbl-input')
+//                ctnInput.classList.add('active');
+//                lblInput.classList.add('active');
+//           })
+
+//           item.addEventListener('blur', (e) => {
+//                let ctnInput = e.target.parentNode;
+//                let lblInput = ctnInput.querySelector('.lbl-input')
+//                if (!item.value) {
+//                     lblInput.classList.remove('active');
+//                }
+//                ctnInput.classList.remove('active');
+//           })
+//      })
+// }, 1000);
+// // form control backup
+
 
 
 setTimeout(() => {
@@ -120,6 +158,7 @@ function fomatMoney(str) {
      return rs.join('');
 }
 
+
 function viewMoreUserInfo() {
      let viewMoreContainer = document.querySelector('.view-more-container');
      viewMoreContainer.classList.toggle('block');
@@ -128,8 +167,6 @@ function viewMoreUserInfo() {
           e.stopPropagation();
      })
 }
-
-
 
 
 /// slider handle

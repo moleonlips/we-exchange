@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChildrenComponent } from './children/children.component';
 
 @Component({
   selector: 'app-projects',
@@ -9,9 +10,16 @@ export class ProjectsComponent implements OnInit {
 
   constructor() { }
 
+  ngOnInit(): void {
+
+  }
+  
+  @ViewChild('childrenComp') childrenComp!: ChildrenComponent
+
   thisPage: string = 'Dự án'
 
-  ngOnInit(): void {
+  toggleInside() {
+    console.log(this.childrenComp);
   }
 
 }

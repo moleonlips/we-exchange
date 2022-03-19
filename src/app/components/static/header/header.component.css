@@ -30,7 +30,7 @@ a:hover {
      left: 0;
      position: fixed;
      z-index: 1;
-     display: none;
+     visibility: hidden;
 }
 
 .view-more-container:hover {
@@ -55,7 +55,7 @@ a:hover {
 }
 
 .block {
-     display: block;
+     visibility: visible;
 }
 
 .avatar-ctn {
@@ -72,11 +72,6 @@ a:hover {
 .other-info {
      flex: 1;
      padding-left: 10px;
-     line-height: 20px;
-}
-
-.other-info a{
-     font-size: 14px;
 }
 
 .vm-item{
@@ -95,4 +90,50 @@ a:hover {
 
 .vm-item:hover {
      background-color: rgba(136, 136, 136, 0.178);
+}
+
+.user-form {    
+     position: fixed;
+     height: 72vh;
+     width: 147vh;
+     top: 47%;
+     left: 50%;
+     padding-top: 100px;
+     transform: translate(-50%, -50%);
+     background-color: rgb(255, 255, 255);
+     animation: form-drop linear .36s;
+     z-index: 11;
+     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.6);
+}
+
+.btn-register{
+     background-color: #ff9100;
+     color: #fff;
+}
+
+.user-form .headding{
+     position: absolute;
+     top: 0;
+     width: 100%;
+     height: 90px;
+     background-color: #ff9100;
+     color: #fff;
+     line-height: 90px;
+     font-size: 30px;
+     letter-spacing: 2px;
+     text-align: center;
+     user-select: none;
+}
+
+
+@keyframes form-drop {
+     from{
+          transform: translate(-50%, -5%);
+          opacity: 0;
+     }
+
+     to{
+          transform: translate(-50%, -50%);
+          opacity: 1;
+     }
 }

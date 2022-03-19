@@ -2,5 +2,12 @@
      <div class="bread-crumb">
           <a [routerLink]="[ '/' ]">Home</a> \ <a [routerLink]="[ '/projects' ]">{{thisPage}}</a>
      </div>
-     <p>projects works!</p>
+     
+     <br>
+     
+     <button (click)="childrenComp.toggleInside()">Toggle</button>
+
+     <br>
+
+     <app-children #childrenComp></app-children>
 </div>

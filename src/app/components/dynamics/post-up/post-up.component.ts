@@ -13,6 +13,10 @@ export class PostUpComponent implements OnInit {
 
   locations: any[] = [
     {
+      lat: 20.925979460573999,
+      lng: 105.93272582222268
+    },
+    {
       lat: 20.947937174731777,
       lng: 105.93509566152306
     },
@@ -69,91 +73,74 @@ export class PostUpComponent implements OnInit {
       lng: 105.92579881010683
     },
     {
-      lat: 20.925979460573945,
-      lng: 105.93272582222245
-    },
-
-    {
       lat: 20.923386729556398,
       lng: 105.9307610698367
     },
-
     {
       lat: 20.922318310789215,
       lng: 105.92344184956119
     },
-
     {
       lat: 20.920519322094737,
       lng: 105.92227838807906
     },
-
     {
       lat: 20.920320566170922,
       lng: 105.93897075630453
     },
-
     {
       lat: 20.922970352199155,
       lng: 105.9637813066059
     },
-
     {
       lat: 20.923560960642412,
       lng: 105.96497598696132
     },
-
     {
       lat: 20.924369645060796,
       lng: 105.96431435547971
     },
-
     {
       lat: 20.92506224768314,
       lng: 105.96420186561741
     },
-
     {
       lat: 20.926691700193402,
       lng: 105.96545706068665
     },
-
     {
       lat: 20.929902037947734,
       lng: 105.9665441725776
     },
-
     {
       lat: 20.93120248251388,
       lng: 105.96490408132941
     },
-
     {
       lat: 20.932616392250882,
       lng: 105.96009412185872
     },
-
     {
       lat: 20.9393236199448,
       lng: 106.02647150492204
     },
-
     {
       lat: 20.934798490515764,
       lng: 106.02042418404875
     },
-
     {
       lat: 20.931599232948212,
       lng: 106.02345865016548
     },
-
     {
       lat: 20.932274230634885,
       lng: 106.02574701949538
     },
   ];
 
+  
+
+  // declare location
   lat!: number;
   lng!: number;
 
@@ -194,6 +181,7 @@ export class PostUpComponent implements OnInit {
       badroom: this.fb.control(null),
       toilet: this.fb.control(null),
       maindirect: this.fb.control(''),
+      postOn: new Date(),
       type: this.fb.control(''),
       legality: this.fb.control('', Validators.required),
     })
@@ -205,13 +193,11 @@ export class PostUpComponent implements OnInit {
       ...postForm,
       ppmm: this.numberConvert(this.postForm.get('ppmm')?.value),
       deposit: this.numberConvert(this.postForm.get('deposit')?.value),
-      postOn: new Date(),
       longi: this.lng,
       lati: this.lat,
     }
-    console.log(rs, this.arrImg);
-    console.log(rs.postOn);
-    
+    console.log(rs);
+    console.log(this.arrImg);
   }
 
   numberConvert(str: string) {
@@ -239,28 +225,6 @@ export class PostUpComponent implements OnInit {
       this.arrImg = this.arrImg.concat(arr)
     })
   }
-
-  // // get filename to put in database
-  // getfilename() {
-
-  //   console.log(this.postForm.get('isCangoc')?.value);
-
-  //   alert(this.arrImg.length)
-  //   this.arrImg.forEach((arr: any) => {
-  //     alert(arr)
-  //   })
-
-  //   // get value of radio button
-  //   let x = document.getElementsByName('tinh-trang');
-  //   x.forEach((a: any) => {
-  //     if (a.checked === true) {
-  //       this.loaiHinh = a.value;
-  //     }
-  //   })
-
-  //   alert(this.loaiHinh)
-
-  // }
 
   deleteImage(i: number) {
     this.arrImg.splice(i, 1)
