@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChatComponent } from './components/dynamics/chat/chat.component';
+import { DetailChatComponent } from './components/dynamics/chat/detail-chat/detail-chat.component';
 import { FilterComponent } from './components/dynamics/filter/filter.component';
 import { HomeComponent } from './components/dynamics/home/home.component';
 import { PostUpComponent } from './components/dynamics/post-up/post-up.component';
 import { PriceChartComponent } from './components/dynamics/price-chart/price-chart.component';
+import { ProductDetailComponent } from './components/dynamics/product-detail/product-detail.component';
 import { ProjectsComponent } from './components/dynamics/projects/projects.component';
 
 const routes: Routes = [
@@ -26,6 +29,20 @@ const routes: Routes = [
   {
     path: 'post-up',
     component: PostUpComponent,
+  },
+  {
+    path: 'product-detail',
+    component: ProductDetailComponent,
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    children: [
+      {
+        path: ':param',
+        component: DetailChatComponent,
+      }
+    ]
   },
   {
     path: '',

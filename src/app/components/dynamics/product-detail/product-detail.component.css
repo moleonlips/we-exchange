@@ -1,0 +1,137 @@
+.image-container {
+     background-color: #fcca55;
+     position: relative;
+     padding: 0 10px;
+     height: 66vh;
+}
+
+.image-container img {
+     display: none;
+     height: 100%;
+     padding: 0;
+}
+
+.image-container img.active {
+     display: block;
+}
+
+.image-container button {
+     background-color: #29282581;
+     transition: all .5s;
+     border-radius: 50%;
+     outline: none;
+     color: #fff;
+     height: 40px;
+     border: none;
+     width: 40px;
+}
+.image-container button:hover {
+     background-color: #292825;
+     color: #fcca55;
+}
+
+.image-container i {
+     font-size: 30px;
+}
+
+.range-pst {
+     background: rgba(0, 0, 0, 0.329);
+     position: absolute;
+     height: 40px;
+     width: 100%;
+     z-index: 1;
+     bottom:0;
+     left: 0;
+}
+
+.range-pst>div{
+     height: 100%;
+}
+
+.range-pst i {
+     font-size: 15px;
+     margin: 0 5px;
+     color: #fff;
+}
+
+.range-pst i:hover {
+     color: #fac13d;
+     cursor: pointer;
+}
+
+.range-pst i.active {
+     color: #fac13d;
+}
+
+.visible {
+     transform: all .8s;
+     opacity: 0;
+}
+
+.image-container:hover .visible{
+     opacity: 1;
+}
+
+.txt-price{
+     color: rgb(216, 40, 40)
+}
+
+
+.h{
+     position: relative;
+     height: 30px;
+     margin-right: 40px;
+}
+
+.info-icons{
+     position: absolute;
+     height: 100%;
+     bottom: 0;
+     left: 0;
+}
+
+.k{
+     line-height: 33px;
+}
+
+agm-map{
+     height: 250px;
+     width: 100%;
+}
+
+.img-avt {
+     border: 2px solid #ccc;
+     border-radius: 50%;
+     overflow: hidden;
+     height: 50px;
+     width: 50px;
+}
+
+.img-avt img {
+     width: 100%;
+}
+
+.btn-viewpage{
+     border: #fac13d solid 1px;
+     font-weight: bold;
+     color: #fac13d;
+}
+
+.btn-viewpage:hover {
+     background-color: #fac13d;
+     color: #fff;
+}
+.quick-chat-container{
+     overflow-x: auto;
+     width: 100%;
+}
+
+.quick-chat-container span {
+     border: 1px solid #fac13d;
+     margin: 5px;
+     float: left;
+}
+.btn-message{
+     background-color: #faa83d;
+     color: #fff
+}

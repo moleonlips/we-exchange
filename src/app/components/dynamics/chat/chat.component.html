@@ -1,0 +1,17 @@
+<div class="container-fluid p-0 pb-3" style="background-color: rgb(236, 236, 236)">
+     <div class="container">
+          <div class="row col-12 pr-0 box-chat-container">
+               <div class="col-4 p-0">
+                    <div class="list-contact">
+                         <div class="contact-item" *ngFor="let item of contactList">
+                              {{item}}
+                         </div>
+                    </div>
+               </div>
+
+               <div class="col-8 bg-primary">
+                    <router-outlet></router-outlet>
+               </div>
+          </div>
+     </div>
+</div>

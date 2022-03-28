@@ -2,15 +2,14 @@
      <div class="container" style="background-color: #fff; padding: 10px 20px;">
           <form [formGroup]="postForm" class="row p-1" (ngSubmit)="submit(postForm.value)">
                <div class="form-group m-0 col-4" style="padding-left: 0">
+                    <h6><label for="my-input">HÌNH ẢNH SẢN PHẨM:</label></h6>
                     <label for="image-prd" class="file-label m-0 col-12">
                          <div class="s6ete4 col-12">
                               <svg xmlns="http://www.w3.org/2000/svg" width="53" height="39" viewBox="0 0 53 39">
                                    <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
                                         <g stroke="#FE9900" stroke-width="2" transform="translate(-255 -179)">
                                              <g transform="translate(132 122)">
-                                                  <path
-                                                       d="M150.631 87.337c-5.755 0-10.42-4.534-10.42-10.127 0-5.593 4.665-10.127 10.42-10.127s10.42 4.534 10.42 10.127c0 5.593-4.665 10.127-10.42 10.127m10.42-24.755l-2.315-4.501h-16.21l-2.316 4.5h-11.579s-4.631 0-4.631 4.502v22.505c0 4.5 4.631 4.5 4.631 4.5h41.684s4.631 0 4.631-4.5V67.083c0-4.501-4.631-4.501-4.631-4.501h-9.263z">
-                                                  </path>
+                                                  <path d="M150.631 87.337c-5.755 0-10.42-4.534-10.42-10.127 0-5.593 4.665-10.127 10.42-10.127s10.42 4.534 10.42 10.127c0 5.593-4.665 10.127-10.42 10.127m10.42-24.755l-2.315-4.501h-16.21l-2.316 4.5h-11.579s-4.631 0-4.631 4.502v22.505c0 4.5 4.631 4.5 4.631 4.5h41.684s4.631 0 4.631-4.5V67.083c0-4.501-4.631-4.501-4.631-4.501h-9.263z"></path>
                                              </g>
                                         </g>
                                    </g>
@@ -35,15 +34,14 @@
                               </span>
                          </div>
                     </label>
-                    <input id="image-prd" (change)="onFileSelected($event)" class="form-control-file" hidden type="file"
-                         multiple="multiple">
-                    <h6><label for="my-input">HÌNH ẢNH SẢN PHẨM:</label></h6>
+
+                    <input autocomplete="off" id="image-prd" (change)="onFileSelected($event)" class="form-control-file" hidden type="file"
+                         multiple="multiple" accept="image/*">
+                         
                     <div class="col-12">
-                         <div class="row">
-                              <div class="col-4 p-1 img-item text-center" *ngFor="let item of arrImg, let i = index"
-                                   style="background-color: #fff;">
-                                   <img class="" src="{{baseUrlImg}}{{item}}" alt="image" height="120px"
-                                        accept="image/*">
+                         <div class="row align-items-center">
+                              <div class="row col-4 p-1 img-item" *ngFor="let item of arrImg, let i = index">
+                                   <img src="{{baseUrlImg}}{{item}}" alt="image">
                                    <button class="btn-del-img" (click)="deleteImage(i)" title="Xóa ảnh này">
                                         <i class="fa-solid fa-trash-can"></i>
                                    </button>
@@ -51,12 +49,11 @@
                          </div>
                     </div>
 
-                    <div>
-                         <h3>Vị trí trên bản đồ</h3>
-                         <agm-map [latitude]="lat" [longitude]="lng" class="maps-zone"
+                    <div class="mt-3">
+                         <h6>Vị trí trên bản đồ</h6>
+                         <agm-map [zoom]="18" [latitude]="lat" [longitude]="lng" class="maps-zone"
                               (mapClick)="onChooseLocation($event)">
                               <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                              <agm-marker [latitude]="20.8761728" [longitude]="106.0288992"></agm-marker>
                          </agm-map>
                     </div>
                </div>
@@ -66,13 +63,10 @@
                     <!-- this field was done -->
                     <div class="form-group">
                          <label for="category">Danh mục tin đăng</label>
-                         <select id="category" class="form-control" formControlName="danhMuc">
+                         <select id="category" class="form-control" formControlName="cateID">
                               <option selected disabled="disabled">Danh mục tin đăng</option>
-                              <option value="Căn hộ/chung cư">Căn hộ/chung cư</option>
-                              <option value="Nhà ở">Nhà ở</option>
-                              <option value="Đất nền">Đất nền</option>
-                              <option value="Văn phòng, cửa hàng">Văn phòng, cửa hàng</option>
-                              <option value="Nhà trọ">Nhà trọ</option>
+                              <option *ngFor="let item of categories" [value]="item.id">{{item.cateName}}</option>
+                              
                               <!-- more options -->
                          </select>
                     </div>
@@ -80,12 +74,12 @@
 
                     <!-- this field was done -->
                     <div class="form-group">
-                         <label for="" class="col-12 p-0 tit-label">Loại hình bất động sản</label>
-                         <input type="radio" value="Cần bán" name="nhuCau" formControlName="nhuCau" id="can-ban"
+                         <label for="" class="col-12 p-0 tit-label">Loại hình giao dịch</label>
+                         <input autocomplete="off" type="radio" value="Cần bán" name="tranzaction" formControlName="tranzaction" id="can-ban"
                               class="rdb-tinhtrang" hidden>
                          <label for="can-ban" class="label-radio">Cần bán</label>
 
-                         <input type="radio" value="Cho thuê" name="nhuCau" formControlName="nhuCau" id="cho-thue"
+                         <input autocomplete="off" type="radio" value="Cho thuê" name="tranzaction" formControlName="tranzaction" id="cho-thue"
                               class="rdb-tinhtrang" hidden>
                          <label for="cho-thue" class="label-radio">Cho thuê</label>
                     </div>
@@ -97,13 +91,14 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="province">Tỉnh / thành phố</label>
-                                        <select formControlName="tinhThanh" id="province" class="form-control">
+                                        <select formControlName="city" id="province"
+                                        onfocus='this.size=5;'
+                                        onblur='this.size=1;'
+                                        onchange='this.size=1; this.blur();'
+                                        class="form-control"
+                                        (change)="provinceSelected($event)">
                                              <option selected disabled="disabled">Tỉnh / thành phố</option>
-                                             <option value="Hà Nội">Hà Nội</option>
-                                             <option value="Hải Phòng">Hải Phòng</option>
-                                             <option value="Đà Nẵng">Đà Nẵng</option>
-                                             <option value="Tp Hồ Chí Minh">Tp Hồ Chí Minh</option>
-                                             <option value="Cần Thơ">Cần Thơ</option>
+                                             <option *ngFor="let item of provinces" >{{item.name.trim()}}</option>
                                              <!-- more options -->
                                         </select>
                                    </div>
@@ -111,28 +106,21 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="district">Quận / huyện</label>
-                                        <select formControlName="quanHuyen" id="district" class="form-control">
+                                        <select formControlName="district" id="district" 
+                                        onfocus='this.size=5;'
+                                        onblur='this.size=1;'
+                                        onchange='this.size=1; this.blur();'
+                                        class="form-control">
                                              <option selected disabled="disabled">Quận / huyện</option>
-                                             <option value="Yên Mĩ">Yên Mĩ</option>
-                                             <option value="Văn Giang">Văn Giang</option>
-                                             <option value="Khoái Châu">Khoái Châu</option>
-                                             <option value="Mĩ Hào">Mĩ Hào</option>
-                                             <option value="Tp Hưng Yên">Tp Hưng Yên</option>
+                                             <option *ngFor="let item of districts">{{item.name}}</option>
                                              <!-- more options -->
                                         </select>
                                    </div>
                               </div>
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
-                                        <label for="phuong">Xã / phường</label>
-                                        <select formControlName="xaPhuong" id="phuong" class="form-control">
-                                             <option selected disabled="disabled">Xã / phường</option>
-                                             <option value="Liên Nghĩa">Liên Nghĩa</option>
-                                             <option value="Cửu Cao">Cửu Cao</option>
-                                             <option value="Xuân Quan">Xuân Quan</option>
-                                             <option value="TT Văn Giang">TT Văn Giang</option>
-                                             <!-- more options -->
-                                        </select>
+                                        <label for="xa-phuong">Xã / phường</label>
+                                        <input autocomplete="off" id="xa-phuong" type="text" formControlName="ward" class="form-control">
                                    </div>
                               </div>
                          </div>
@@ -143,11 +131,11 @@
                     <h6>Thông tin chi tiết</h6>
                     <div class="form-group">
                          <label for="" class="col-12 p-0 tit-label">Tình trạng bất động sản</label>
-                         <input formControlName="tinhTrang" type="radio" value="Đã bàn giao" name="tinhTrang"
+                         <input autocomplete="off" formControlName="status" type="radio" value="Đã bàn giao" name="status"
                               id="da-ban-giao" class="rdb-tinhtrang" hidden>
                          <label for="da-ban-giao" class="label-radio">Đã bàn giao</label>
 
-                         <input formControlName="tinhTrang" type="radio" value="Chưa bàn giao" name="tinhTrang"
+                         <input autocomplete="off" formControlName="status" type="radio" value="Chưa bàn giao" name="status"
                               id="chua-ban-giao" class="rdb-tinhtrang" hidden>
                          <label for="chua-ban-giao" class="label-radio">Chưa bàn giao</label>
                     </div>
@@ -158,14 +146,14 @@
                          <div class="row">
                               <div class="col-12 p-0 pr-2">
                                    <label for="loai-hinh" class="ctn-input col-12">
-                                        <input formControlName="loaiHinh" class="txt-input" type="text" id="loai-hinh">
+                                        <input autocomplete="off" formControlName="type" class="txt-input" type="text" id="loai-hinh">
                                         <label class="lbl-input" for="loai-hinh">Loại hình căn hộ</label>
                                    </label>
                               </div>
 
                               <div class="col-6 p-0 pr-2">
                                    <label for="so-phong" class="ctn-input col-12">
-                                        <input formControlName="soPhongNgu" class="txt-input" type="number"
+                                        <input autocomplete="off" formControlName="badroom" class="txt-input" type="number"
                                              id="so-phong">
                                         <label class="lbl-input" for="so-phong">Số phòng ngủ</label>
                                    </label>
@@ -173,21 +161,21 @@
 
                               <div class="col-6 p-0 pr-2">
                                    <label for="so-wc" class="ctn-input col-12">
-                                        <input formControlName="soPhongVS" class="txt-input" type="number" id="so-wc">
+                                        <input autocomplete="off" formControlName="toilet" class="txt-input" type="number" id="so-wc">
                                         <label class="lbl-input" for="so-wc">Số phòng vệ sinh</label>
                                    </label>
                               </div>
 
                               <div class="col-6 p-0 pr-2">
                                    <label for="huong-bcong" class="ctn-input col-12">
-                                        <input formControlName="huongBanCong" class="txt-input" type="text"
+                                        <input autocomplete="off" formControlName="balcony" class="txt-input" type="text"
                                              id="huong-bcong">
                                         <label class="lbl-input" for="huong-bcong">Hướng ban công</label>
                                    </label>
                               </div>
                               <div class="col-6 p-0 pr-2">
                                    <label for="huong-cua-chinh" class="ctn-input col-12">
-                                        <input formControlName="huongCuaChinh" class="txt-input" type="text"
+                                        <input autocomplete="off" formControlName="maindirect" class="txt-input" type="text"
                                              id="huong-cua-chinh">
                                         <label class="lbl-input" for="huong-cua-chinh">Hướng cửa chính</label>
                                    </label>
@@ -199,9 +187,25 @@
 
                     <div class="col-12">
                          <div class="row">
+                              <div class="col-6 p-0 pr-2">
+                                   <label for="block" class="ctn-input col-12">
+                                        <input autocomplete="off" formControlName="block" class="txt-input" type="text"
+                                             id="block">
+                                        <label class="lbl-input" for="block">Tháp</label>
+                                   </label>
+                              </div>
+
+                              <div class="col-6 p-0 pr-2">
+                                   <label for="floor" class="ctn-input col-12">
+                                        <input autocomplete="off" formControlName="floor" class="txt-input" type="text"
+                                             id="floor">
+                                        <label class="lbl-input" for="floor">Tầng</label>
+                                   </label>
+                              </div>
+
                               <div class="form-group col-6 p-0 pr-2">
                                    <label for="category">Giấy tờ pháp lí</label>
-                                   <select formControlName="giayTo" id="category" class="form-control">
+                                   <select formControlName="legality" id="category" class="form-control">
                                         <option selected disabled="disabled">Giấy tờ pháp lí</option>
                                         <option value="Đã có sổ">Đã có sổ</option>
                                         <option value="Đang chờ sổ">Đang chờ sổ</option>
@@ -211,7 +215,7 @@
                               </div>
                               <div class="form-group col-6 p-0 pr-2">
                                    <label for="category">Tình trạng nội thất</label>
-                                   <select formControlName="noiThat" id="category" class="form-control">
+                                   <select formControlName="interior" id="category" class="form-control">
                                         <option selected disabled="disabled">Tình trạng nội thất</option>
                                         <option value="Cao cấp">Cao cấp</option>
                                         <option value="Đầy đủ">Đầy đủ</option>
@@ -224,7 +228,7 @@
                     </div>
 
                     <div class="form-group">
-                         <input formControlName="canGoc" id="can-goc" type="checkbox" class="check-box-inp">
+                         <input autocomplete="off" formControlName="iscorner" id="can-goc" type="checkbox" class="check-box-inp">
                          <label for="can-goc">Căn góc</label>
                     </div>
 
@@ -233,21 +237,21 @@
                          <div class="row">
                               <div class="col-12 p-0 pr-2">
                                    <label for="dien-tich" class="ctn-input col-12">
-                                        <input formControlName="dienTich" class="txt-input" type="text" id="dien-tich">
+                                        <input autocomplete="off" formControlName="size" class="txt-input" type="tel" id="dien-tich">
                                         <label class="lbl-input" for="dien-tich">Diện tích</label>
                                    </label>
                               </div>
 
                               <div class="col-12 p-0 pr-2">
                                    <label for="gia-ban" class="ctn-input col-12">
-                                        <input formControlName="giaBan" class="txt-input" type="tel" id="gia-ban">
-                                        <label class="lbl-input" for="gia-ban">Giá bán</label>
+                                        <input autocomplete="off" formControlName="ppmm" class="txt-input money" type="tel" id="gia-ban">
+                                        <label class="lbl-input" for="gia-ban">Giá thuê / bán</label>
                                    </label>
                               </div>
 
                               <div class="col-12 p-0 pr-2">
                                    <label for="tien-coc" class="ctn-input col-12">
-                                        <input formControlName="tienCoc" class="txt-input" type="tel" id="tien-coc">
+                                        <input autocomplete="off" formControlName="deposit" class="txt-input money" type="tel" id="tien-coc">
                                         <label class="lbl-input" for="tien-coc">Số tiền cọc</label>
                                    </label>
                               </div>
@@ -259,7 +263,7 @@
                          <div class="row">
                               <div class="col-12 p-0 pr-2">
                                    <label for="tieu-de" class="ctn-input col-12">
-                                        <input formControlName="tieuDe" class="txt-input" type="text" id="tieu-de">
+                                        <input autocomplete="off" formControlName="title" class="txt-input" type="text" id="tieu-de">
                                         <label class="lbl-input" for="tieu-de">Tiêu đề tin</label>
                                    </label>
                               </div>
@@ -268,16 +272,16 @@
 
                     <div class="form-group pr-2">
                          <label for="mo-ta">Mô tả chi tiết</label>
-                         <textarea formControlName="moTa" id="mo-ta" class="form-control" rows="5"></textarea>
+                         <textarea formControlName="description" id="mo-ta" class="form-control" rows="5"></textarea>
                     </div>
 
                     <h6 class="mt-2">Bạn là</h6>
                     <div class="form-group">
-                         <input type="radio" value="Môi giới" formControlName="canhanMoigioi" name="canhanMoigioi"
+                         <input autocomplete="off" type="radio" value="Môi giới" name="canhanMoigioi"
                               id="moi-gioi" class="rdb-tinhtrang" hidden>
                          <label for="moi-gioi" class="label-radio">Môi giới</label>
 
-                         <input type="radio" value="Cá nhân" formControlName="canhanMoigioi" name="canhanMoigioi"
+                         <input autocomplete="off" type="radio" value="Cá nhân" name="canhanMoigioi"
                               id="ca-nhan" class="rdb-tinhtrang" hidden>
                          <label for="ca-nhan" class="label-radio">Cá nhân</label>
                     </div>

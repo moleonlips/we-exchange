@@ -1,0 +1,332 @@
+<div class="container-fluid pt-3 pb-3" style="background-color: #ececec">
+     <div class="container" style="background-color: #fff; padding: 10px 20px;">
+          <div class="row">
+               <div class="col-12 mb-2 p-0">
+                    <a routerLink="/home">Trang chủ</a>
+                    \ <a routerLink="/home">Cho thuê</a>
+                    \ <a routerLink="/home">Căn hộ - Chung cư</a>
+                    \ <a routerLink="/home">Hà Nội</a>
+               </div>
+               <div class="col-8">
+                    <div class="row image-container justify-content-between align-items-center">
+                         <!-- prev button -->
+                         <button class="visible" id="prev-btn">
+                              <i class="fa-solid fa-caret-left"></i>
+                         </button>
+
+                         <!-- loop at here -->
+                         <img class="detail-img" title="Hình {{i + 1}}" *ngFor="let item of imgs, let i = index"
+                              src="../../../../assets/img/details/{{item}}" alt="">
+
+                         <!-- next button -->
+                         <button class="visible" id="next-btn">
+                              <i class="fa-solid fa-caret-right"></i>
+                         </button>
+
+                         <div class="range-pst visible">
+                              <div class="row justify-content-center align-items-center">
+                                   <i *ngFor="let item of imgs, let i = index" class="fa-solid fa-circle"></i>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="row mt-2">
+                         <!-- title -->
+                         <h5 class="col-12 p-0">Đất lọt khe khu phân lô, 48m2, đường 6m</h5>
+
+                         <!-- price and size -->
+                         <p class="col-12 p-0">
+                              <b class="txt-price">3,2 tỷ</b> - <b>.........</b>
+                         </p>
+
+                         <!-- hỗ trợ trả góp -->
+                         <div class="col-12 p-0">
+                              <span style="height:28px; width: 40px">
+                                   <img style="height: 22px; width:40px"
+                                        src="https://static.chotot.com/storage/react-common/bank_icon.svg" alt="">
+                              </span>
+                              Trả góp <b>29.87 triệu/tháng</b>, trả trước 640 triệu
+                         </div>
+
+                         <!-- vị trí trên bản đồ -->
+                         <div class="col-12 p-0">
+                              <span style="height:28px; width: 40px">
+                                   <img style="height: 22px; width:40px"
+                                        src="https://static.chotot.com/storage/icons/logos/ad-param/location.svg"
+                                        alt="">
+                              </span>
+                              <a href="#">140, Vườn Lài, Phường An Phú Đông, Quận 12, Tp Hồ Chí Minh</a>
+                         </div>
+
+                         <!-- mô tả bất động sản -->
+                         <h6 class="mt-3">Mô tả:</h6>
+                         <p class="text-justify">
+                              đất lọt khe khu phân lô vườn lài AN phú Đông Quận 12 gần cầu APĐ hướng đi Gv rất gần!
+                              ĐT 4 x 12 sổ Công nhận đủ khu phân lô xây dựng tự do, Đg 5m thông, hai bên đã cất nhà! Vị
+                              trí đất nằm ngay bên trường mầm non Sơn ca 8, hướng nhìn ra sông Vàm thuật!
+                              Giá nhanh nhẹn 3ty2 bớt ít cho khách thiện chí!
+                         </p>
+
+                         <!-- thông tin liên lạc -->
+                         <p><b>Thông tin liên hệ: </b> <a href="tel:+8475603561">0375603561</a></p>
+
+                         <!-- thông số bất động sản -->
+                         <div class="col-12 p-0">
+                              <div class="row">
+                                   <!-- size -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons" src="../../../../assets/img/info-icon/size.png"
+                                                  alt="">
+                                        </span>
+                                        Diện tích đất: <b>.........</b>
+                                   </div>
+                                   <!-- cho thuê -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons" src="../../../../assets/img/info-icon/cho-thue.png"
+                                                  alt="">
+                                        </span>
+                                        Cho thuê
+                                   </div>
+                                   <!-- Đặc điểm -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons" src="../../../../assets/img/info-icon/dac-diem.png"
+                                                  alt="">
+                                        </span>
+                                        Đặc điểm: <b>.........</b>
+                                   </div>
+                                   <!-- Giá mét vuông -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons"
+                                                  src="../../../../assets/img/info-icon/gia-met-vuong.png" alt="">
+                                        </span>
+                                        Giá / mét vuông: <b>.........</b>
+                                   </div>
+                                   <!-- tình trạng giấy tờ -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons" src="../../../../assets/img/info-icon/giay-to.png"
+                                                  alt="">
+                                        </span>
+                                        Tình trạng giấy tờ: <b>.........</b>
+                                   </div>
+                                   <!-- hướng ban công -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons"
+                                                  src="../../../../assets/img/info-icon/huong-ban-cong.png" alt="">
+                                        </span>
+                                        Hướng ban công: <b>.........</b>
+                                   </div>
+                                   <!-- hướng cửa chính -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons"
+                                                  src="../../../../assets/img/info-icon/huong-cua.png" alt="">
+                                        </span>
+                                        Hướng cửa chính: <b>.........</b>
+                                   </div>
+                                   <!-- Loại hình -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons"
+                                                  src="../../../../assets/img/info-icon/loai-hinh.png" alt="">
+                                        </span>
+                                        Loại hình bất động sản: <b>.........</b>
+                                   </div>
+                                   <!-- số phòng ngủ -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons"
+                                                  src="../../../../assets/img/info-icon/phong-ngu.png" alt="">
+                                        </span>
+                                        Số phòng ngủ: <b>.........</b>
+                                   </div>
+                                   <!-- số tầng -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons" src="../../../../assets/img/info-icon/so-tang.png"
+                                                  alt="">
+                                        </span>
+                                        Tầng: <b>.........</b>
+                                   </div>
+                                   <!-- số tiền cọc -->
+                                   <div class="col-6 k">
+                                        <span class="h">
+                                             <img class="info-icons"
+                                                  src="../../../../assets/img/info-icon/so-tien-coc.png" alt="">
+                                        </span>
+                                        Số tiền cọc: <b>.........</b>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <h6 class="mt-3">Chat nhanh với người bán</h6>
+                         <div class="quick-chat-container">
+                              <div style="width: auto; width: 1120px;">
+                                   <span class="btn" (click)="quickChat($event)">Tư vấn cho tôi với!</span>
+                                   <span class="btn" (click)="quickChat($event)">Căn hộ này còn không?</span>
+                                   <span class="btn" (click)="quickChat($event)">Tình trạng giấy tờ thế nào ạ?</span>
+                                   <span class="btn" (click)="quickChat($event)">Tôi có thể trả góp không?</span>
+                                   <span class="btn" (click)="quickChat($event)">Có chỗ đậu xe không?</span>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-4 p-0 pl-3">
+                    <!-- vị trí trên bản đồ -->
+                    <div class="row">
+                         <div class="col-12 mb-3" style="padding: 0 30px">
+                              <div class="row align-items-center">
+                                   <div class="img-avt">
+                                        <img src="../../../../assets/img/avt.png" alt="">
+                                   </div>
+                                   <div class="ml-3 d-flex flex-column justify-content-around">
+                                        <b>Lý Tuấn Đức</b>
+                                        <span class="text-success">
+                                             <i class="fa-solid fa-circle"></i>
+                                             Đang hoạt động
+                                        </span>
+                                   </div>
+                                   <div style="flex: 1">
+                                        <button class="btn btn-viewpage float-right">
+                                             Xem trang
+                                        </button>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <!-- call now -->
+                         <div class="col-12">
+                              <a href="tel:0375603561" class="mb-1 col-12 btn btn-success">
+                                   <i class="fa-solid fa-phone"></i> Call now
+                              </a>
+                              <a href="https://zalo.me/0375603561" class="mb-1 col-12 btn btn-primary">
+                                   <i class="fa-solid fa-circle-z"></i> Zalo
+                              </a>
+                              <button class="mb-1 col-12 btn btn-message" (click)="onChat()">Nhắn tin</button>
+                         </div>
+
+                         <!-- location on the maps -->
+                         <div class="col-12">
+                              <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng" class="maps-zone">
+                                   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                              </agm-map>
+                         </div>
+                    </div>
+
+                    <!-- banner ads -->
+                    <img class="col-12 p-0 mt-3" src="../../../../assets/img/banner/300x2-adx621d9e9903908.gif" alt="">
+               </div>
+
+               <div class="col-12 mb-2 p-0">
+                    <div class="container-fluid gray-bg p-0">
+                         <div class="container bg-white p-0">
+                              <h6 class="pt-3">Các sản phẩm tương tự</h6>
+                                   <div class="d-flex align-items-center pb-3">
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                    
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                    
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                    
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                    
+                                        <div class="product-tag text-justify">
+                                             <a href="/product-detail">
+                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
+                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
+                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
+                                                  <p class="product-price">900 triệu</p>
+                                                  <p class="date-place">
+                                                       <span>3 phút trước</span> -
+                                                       <span>TP. Hồ Chí Minh</span>
+                                                  </p>
+                                             </a>
+                                        </div>
+                                   </div>
+                                   <div class="col-12 p-0">
+                                        <a href="#" class="cate-detail">Xem thêm 250.890 tin đăng mua bán >></a>
+                                   </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div *ngIf="isOpened" class="box-chat">
+     <!-- headding box chat -->
+     <div class="head-bxc">
+          <span>
+               <img src="../../../../assets/img/avt.png" alt="">
+               <b>Ly Tuan Duc</b>
+          </span>
+          <span class="kf">
+               <button>-</button>
+               <button (click)="onCloseBoxChat()">x</button>
+          </span>
+     </div>
+
+     <div class="body-bxc">
+          <div *ngFor="let item of messages" [class]="item.auth? 'is-auth': ''">
+               <span title="{{item.date | date: 'hh:mm:ss - dd/MM/yyyy'}}">
+                    {{item.content}}
+               </span>
+          </div>
+     </div>
+
+     <form class="input-bxc" [formGroup]="frmChatting" (ngSubmit)="onSendMessage(frmChatting.value)">
+          <input formControlName="content" type="text" placeholder="Enter your message...">
+          <button class="btn" type="submit">
+               <i class="fas fa-paper-plane"></i>
+          </button>
+     </form>
+</div>

@@ -1,37 +1,45 @@
 .file-label {
-     height:100px;
      border: 3px dotted orange;
-     cursor: pointer;
      position: relative;
+     cursor: pointer;
+     height:100px;
 }
 
 .s6ete4 {
-     position: absolute;
-     top: 50%;
-     left: 50%;
      transform: translate(-12%, -60%);
+     position: absolute;
+     left: 50%;
+     top: 50%;
 }
 
 .img-item {
-     position: relative;
+     max-width: calc(33.3333% - 2px);
+     justify-content: center;
+     overflow: hidden;
+     height: 144px;
+     margin: 0 1px;
 }
+
 .img-item img {
-     max-width: 100%;
+     position: relative;
+     max-height: 100%;
 }
+
 .img-item:hover img{
      opacity: .2;
 }
+
 .btn-del-img {
-     position: absolute;
-     top: 50%;
-     left: 50%;
      transform: translate(-50%, -50%);
-     color: rgb(209, 49, 0);
+     color: rgb(243, 148, 6);
+     background-color: unset;
+     position: absolute;
      font-size: 30px;
+     outline: none;
      display: none;
      border: none;
-     outline: none;
-     background-color: unset;
+     left: 50%;
+     top: 50%;
 }
 .img-item:hover .btn-del-img{
      display: block
@@ -80,5 +88,4 @@
 
 .maps-zone {
      height: 286px;
-     
 }

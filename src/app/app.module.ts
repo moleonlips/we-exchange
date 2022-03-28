@@ -21,6 +21,10 @@ import { PostUpComponent } from './components/dynamics/post-up/post-up.component
 import { TestComponent } from './components/dynamics/post-up/test/test.component';
 
 import { SharedService } from './services/shared/shared.service';
+import { ProductDetailComponent } from './components/dynamics/product-detail/product-detail.component';
+import { ChildrenComponent } from './components/dynamics/projects/children/children.component';
+import { ChatComponent } from './components/dynamics/chat/chat.component';
+import { DetailChatComponent } from './components/dynamics/chat/detail-chat/detail-chat.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { SharedService } from './services/shared/shared.service';
     LimitStringPipe,
     FilterComponent,
     PostUpComponent,
-    TestComponent
+    TestComponent,
+    ProductDetailComponent,
+    ChildrenComponent,
+    ChatComponent,
+    DetailChatComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,7 @@ import { SharedService } from './services/shared/shared.service';
     HttpClientModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCWEwcMFHjwI-YCYcEoGVrgEdGcgbPX0sg'
+      apiKey: 'AIzaSyDnCUhO9s_pDmEoDdypf-KQ-rxp0t5rFHM'
     })
   ],
   providers: [
