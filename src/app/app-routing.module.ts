@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChatComponent } from './components/dynamics/chat/chat.component';
+import { DetailChatComponent } from './components/dynamics/chat/detail-chat/detail-chat.component';
 import { FilterComponent } from './components/dynamics/filter/filter.component';
 import { HomeComponent } from './components/dynamics/home/home.component';
 import { PostUpComponent } from './components/dynamics/post-up/post-up.component';
@@ -31,6 +33,16 @@ const routes: Routes = [
   {
     path: 'product-detail',
     component: ProductDetailComponent,
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    children: [
+      {
+        path: ':param',
+        component: DetailChatComponent,
+      }
+    ]
   },
   {
     path: '',

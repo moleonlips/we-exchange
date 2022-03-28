@@ -63,13 +63,10 @@
                     <!-- this field was done -->
                     <div class="form-group">
                          <label for="category">Danh mục tin đăng</label>
-                         <select id="category" class="form-control" formControlName="cateName">
+                         <select id="category" class="form-control" formControlName="cateID">
                               <option selected disabled="disabled">Danh mục tin đăng</option>
-                              <option value="Căn hộ/chung cư">Căn hộ/chung cư</option>
-                              <option value="Nhà ở">Nhà ở</option>
-                              <option value="Đất nền">Đất nền</option>
-                              <option value="Văn phòng, cửa hàng">Văn phòng, cửa hàng</option>
-                              <option value="Nhà trọ">Nhà trọ</option>
+                              <option *ngFor="let item of categories" [value]="item.id">{{item.cateName}}</option>
+                              
                               <!-- more options -->
                          </select>
                     </div>
@@ -94,13 +91,14 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="province">Tỉnh / thành phố</label>
-                                        <select formControlName="city" id="province" class="form-control">
+                                        <select formControlName="city" id="province"
+                                        onfocus='this.size=5;'
+                                        onblur='this.size=1;'
+                                        onchange='this.size=1; this.blur();'
+                                        class="form-control"
+                                        (change)="provinceSelected($event)">
                                              <option selected disabled="disabled">Tỉnh / thành phố</option>
-                                             <option value="Hà Nội">Hà Nội</option>
-                                             <option value="Hải Phòng">Hải Phòng</option>
-                                             <option value="Đà Nẵng">Đà Nẵng</option>
-                                             <option value="Tp Hồ Chí Minh">Tp Hồ Chí Minh</option>
-                                             <option value="Cần Thơ">Cần Thơ</option>
+                                             <option *ngFor="let item of provinces" >{{item.name.trim()}}</option>
                                              <!-- more options -->
                                         </select>
                                    </div>
@@ -108,13 +106,13 @@
                               <div class="col-4 p-0 pr-2">
                                    <div class="form-group">
                                         <label for="district">Quận / huyện</label>
-                                        <select formControlName="district" id="district" class="form-control">
+                                        <select formControlName="district" id="district" 
+                                        onfocus='this.size=5;'
+                                        onblur='this.size=1;'
+                                        onchange='this.size=1; this.blur();'
+                                        class="form-control">
                                              <option selected disabled="disabled">Quận / huyện</option>
-                                             <option value="Yên Mĩ">Yên Mĩ</option>
-                                             <option value="Văn Giang">Văn Giang</option>
-                                             <option value="Khoái Châu">Khoái Châu</option>
-                                             <option value="Mĩ Hào">Mĩ Hào</option>
-                                             <option value="Tp Hưng Yên">Tp Hưng Yên</option>
+                                             <option *ngFor="let item of districts">{{item.name}}</option>
                                              <!-- more options -->
                                         </select>
                                    </div>
@@ -189,6 +187,22 @@
 
                     <div class="col-12">
                          <div class="row">
+                              <div class="col-6 p-0 pr-2">
+                                   <label for="block" class="ctn-input col-12">
+                                        <input autocomplete="off" formControlName="block" class="txt-input" type="text"
+                                             id="block">
+                                        <label class="lbl-input" for="block">Tháp</label>
+                                   </label>
+                              </div>
+
+                              <div class="col-6 p-0 pr-2">
+                                   <label for="floor" class="ctn-input col-12">
+                                        <input autocomplete="off" formControlName="floor" class="txt-input" type="text"
+                                             id="floor">
+                                        <label class="lbl-input" for="floor">Tầng</label>
+                                   </label>
+                              </div>
+
                               <div class="form-group col-6 p-0 pr-2">
                                    <label for="category">Giấy tờ pháp lí</label>
                                    <select formControlName="legality" id="category" class="form-control">
@@ -231,7 +245,7 @@
                               <div class="col-12 p-0 pr-2">
                                    <label for="gia-ban" class="ctn-input col-12">
                                         <input autocomplete="off" formControlName="ppmm" class="txt-input money" type="tel" id="gia-ban">
-                                        <label class="lbl-input" for="gia-ban">Giá bán</label>
+                                        <label class="lbl-input" for="gia-ban">Giá thuê / bán</label>
                                    </label>
                               </div>
 

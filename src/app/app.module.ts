@@ -23,6 +23,8 @@ import { TestComponent } from './components/dynamics/post-up/test/test.component
 import { SharedService } from './services/shared/shared.service';
 import { ProductDetailComponent } from './components/dynamics/product-detail/product-detail.component';
 import { ChildrenComponent } from './components/dynamics/projects/children/children.component';
+import { ChatComponent } from './components/dynamics/chat/chat.component';
+import { DetailChatComponent } from './components/dynamics/chat/detail-chat/detail-chat.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ChildrenComponent } from './components/dynamics/projects/children/child
     PostUpComponent,
     TestComponent,
     ProductDetailComponent,
-    ChildrenComponent
+    ChildrenComponent,
+    ChatComponent,
+    DetailChatComponent
   ],
   imports: [
     BrowserModule,

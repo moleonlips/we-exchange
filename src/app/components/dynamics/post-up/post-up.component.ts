@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Categories } from 'src/app/models/categories.model';
+import { Districts } from 'src/app/models/districts.model';
+import { Provinces } from 'src/app/models/provinces.model';
 import { SharedService } from 'src/app/services/shared/shared.service';
 
 @Component({
@@ -138,7 +141,9 @@ export class PostUpComponent implements OnInit {
     },
   ];
 
-  
+  categories!: Categories[]
+  provinces!: Provinces[]
+  districts!: Districts[]
 
   // declare location
   lat!: number;
@@ -156,12 +161,13 @@ export class PostUpComponent implements OnInit {
   arrImg: any = []
 
   loaiHinh: string = ''
+  userID_L = JSON.parse(localStorage.getItem('currentUser')!).id;
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
       id: this.fb.control(0),
       title: this.fb.control('', Validators.required),
-      cateName: this.fb.control('', Validators.required),
+      cateID: this.fb.control(null, Validators.required),
       tranzaction: this.fb.control('', Validators.required),
       city: this.fb.control('', Validators.required),
       district: this.fb.control('', Validators.required),
@@ -186,8 +192,34 @@ export class PostUpComponent implements OnInit {
       legality: this.fb.control('', Validators.required),
     })
     this.locationHandler()
+    this.getHintData()
   }
-  
+
+  ngOnDestroy(): void {
+    console.log('destroyed!')
+  }
+
+  getHintData() {
+    this.service.getCategories().subscribe(cate => {
+      this.service.getProvince().subscribe(province => {
+        if (cate && province) {
+          this.categories = cate
+          this.provinces = province
+        }
+      })
+    })
+  }
+
+  provinceSelected(event: any) {
+    let prvID = this.provinces.filter(a => {
+      return a.name.trim() == event.target.value
+    })[0].id
+
+    this.service.getDistricts(prvID).subscribe((data: Districts[]) => {
+      this.districts = data
+    })
+  }
+
   submit(postForm: any) {
     let rs = {
       ...postForm,
@@ -195,9 +227,34 @@ export class PostUpComponent implements OnInit {
       deposit: this.numberConvert(this.postForm.get('deposit')?.value),
       longi: this.lng,
       lati: this.lat,
+      userID: this.userID_L,
+      id: Math.random()
     }
-    console.log(rs);
-    console.log(this.arrImg);
+
+    this.service.postProduct(rs).subscribe(() => {
+      this.arrImg.forEach((path: string, index: number) => {
+        let pic = {
+          id: 0,
+          url: path,
+          productID: rs.id,
+          isThumbnail: index == 0 ? true : false,
+        }
+        this.service.postPictures(pic).subscribe(() => { return null; })
+      })
+      alert('Thêm thành công!')
+    })
+    // let imgs = this.arrImg.map((img:string) => {
+    //   return (
+    //     {
+    //       id: 0,
+    //       productID: rs.id,
+    //       path: img
+    //     }
+    //   )
+    // })
+    // console.log(rs);
+    // console.log(imgs);
+    document.location.reload();
   }
 
   numberConvert(str: string) {
@@ -220,9 +277,11 @@ export class PostUpComponent implements OnInit {
     this.selectedFile = <File>event.target.files;
     this.service.onUpLoad(this.selectedFile).subscribe((data: any) => {
       // this.arrImg.push(data)
-      let urls = data.split('@#$nb32bh@#$')
-      let arr = urls.slice(1, urls.length)
-      this.arrImg = this.arrImg.concat(arr)
+      if (Boolean(data)) {
+        let urls = data.split('@#$nb32bh@#$')
+        let arr = urls.slice(1, urls.length)
+        this.arrImg = this.arrImg.concat(arr)
+      }
     })
   }
 

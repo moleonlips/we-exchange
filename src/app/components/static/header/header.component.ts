@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
   onRegister(value: User) {
     if(this.cfmPassWord === this.registerForm.get('password')?.value){
       this.service.onRegister(value).subscribe(() => {
-        alert('Thêm thành công!\n' + value)
+        alert('Thêm thành công!\n' + JSON.stringify(value))
         location.reload();
       })
     }
