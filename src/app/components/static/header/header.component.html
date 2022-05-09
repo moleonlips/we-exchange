@@ -32,7 +32,7 @@
                                              </path>
                                         </g>
                                    </svg>
-                                   Quản lí tin
+                                   Sản phẩm của tôi
                               </div>
                          </a>
                          <a routerLink="/chat" class="link">
@@ -408,9 +408,12 @@
                     </form>
 
                     <div class="d-flex align-items-center justify-content-end">
+                         <span title="{{numberOfConnection}} people are connecting" [class]="numberOfConnection? 'number-of-connect': ''">
+                              {{numberOfConnection}}
+                         </span>
                          <div class="user">
                               <a href="">
-                                   <div>
+                                   <div [title]="currentUser? currentUser.ward + ' - ' + currentUser.district + ' - ' + currentUser.city: ''">
                                         <svg data-type="monochrome" xmlns="http://www.w3.org/2000/svg"
                                              viewBox="0 0 30 30" width="1em" height="1em" fill="none" class="is750wp">
                                              <g fill="none" stroke="currentColor">

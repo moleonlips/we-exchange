@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { 
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  Router,
+  RouterState,
+  RouterStateSnapshot 
+} from '@angular/router';
 
 @Component({
   selector: 'app-filter',
@@ -7,39 +14,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private activated: ActivatedRoute,
+    private router: Router,
+  ) { 
+    const state: RouterState = router.routerState;
+    const snapshot: RouterStateSnapshot = state.snapshot;
+    const root: ActivatedRouteSnapshot = snapshot.root;
+    const child = root.firstChild;
+  }
 
-  viewMode = true;
-
-  thisPage: string = 'Filtering...'
-
-  defaultOrder = 'Giá thấp trước'
 
   ngOnInit(): void {
+    
   }
 
-  changeViewMode() {
-    this.viewMode = !this.viewMode
-  }
-
-  
-  // change the active item filter
-  activeFilter(event: any) {
-    // layout handle
-    let eles = document.querySelectorAll('.order-filter-item')
-    eles.forEach(e => {
-      e.classList.remove('active')
-    })
-    event.target.classList.add('active')
-    // end layout handle
-  }
-
-  // select option to sort
-  sortBy(event:any) {
-    //lay out handle
-    let orderitem = event.target.textContent
-    this.defaultOrder = orderitem
-    //end layout handle
-  }
 
 }

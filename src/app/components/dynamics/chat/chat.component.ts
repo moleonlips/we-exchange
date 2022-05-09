@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Messages } from 'src/app/models/messages.model';
+import { Product } from 'src/app/models/product.model';
+import { User } from 'src/app/models/user.model';
+import { SharedService } from 'src/app/services/shared/shared.service';
 
 @Component({
   selector: 'app-chat',
@@ -7,235 +11,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: SharedService
+  ) { }
 
-  messages = [
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-    {
-      id: 1,
-      recipientID: Math.ceil(Math.random() * 5),
-      senderID:  Math.ceil(Math.random() * 5),
-      content: 'hello!',
-      productID: 1
-    },
-  ]
+  currentUser = JSON.parse(localStorage.getItem('currentUser')!)
 
-  contactList:any = []
-  recipientIDList:any[] = []
-  set = new Set();
+  filterChat = 'Tất cả';
+
+  productWasMentioned = new Set();
+
+  baseUrl = 'https://localhost:44339/Photos/Products/';
+
+  listCompositeObject: any[] = []
+  
+  mlist!: Messages[]
 
   ngOnInit(): void {
-    console.log(this.messages);
-    
+    this.fnLoadData(this.filterChat)
+  }
 
-    this.recipientIDList = this.messages.map((a:any) => {
-      return a.recipientID
+
+  fnLoadData(optionn: string) {
+    // lấy ra danh sách mã sản phẩm được currentUser quan tâm
+    this.service.getMessages().subscribe((data: Messages[]) => {
+      let x = data.filter((m: Messages) => {
+        return optionn === 'Tất cả'? m.senderID === this.currentUser.id || m.recipientID === this.currentUser.id:
+        (optionn === 'Tôi bán'? m.recipientID === this.currentUser.id: m.senderID === this.currentUser.id)
+      })
+      // lấy ra các mã sản phẩm được nhắc đến trong những tin nhắn đó
+      
+      
+      x.map((m: Messages) => m.productID)
+      // distincting
+      .forEach((item: number) => {
+        this.productWasMentioned.add(item)
+      })
+
+      Array(...this.productWasMentioned).forEach(item => {
+        this.service.getProductById(Number(item)).subscribe((data: Product) => {
+          this.listCompositeObject = [...this.listCompositeObject, data]
+        })
+      })
+  
+      console.log(x);
     })
+  }
 
-    this.contactList = new Set(this.recipientIDList);
-    console.log(this.contactList);
+  onfilterChat(item: string) {
+    this.filterChat = item;
+    this.fnLoadData(item)
   }
 
 }

@@ -1,1 +1,81 @@
-<p>detail-chat works!</p>
+
+<div class="chat-zone-detail">
+
+   <div class="converstaion-content">
+      <div class="about-product">
+         <div class="author d-flex align-items-center">
+            <img src="../../../../../assets/img/avt.png" alt="">
+            <div style="height: 100%; margin-left: 8px;">
+               <b>User name</b>
+               <p style="color: #666">Hoạt động 2 ngày trước</p>
+            </div>
+         </div>
+         <a href="#" _blank="true">
+            <div class="the-product d-flex align-items-center">
+               <img src="../../../../../assets/img/products/lands.jpg" style="height: 100%" alt="">
+               <div class="d-flex flex-column ml-3">
+                  <b>Product title</b>
+                  <b>2 tỷ</b>
+               </div>
+            </div>
+         </a>
+      </div>
+      <div class="messages">
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span>this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span>this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span>this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span>this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span>this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span>this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span class="mind">this is my message</span>
+         </div>
+         <div class="mess-line">
+            <span>this is my message</span>
+         </div>
+      </div>
+   </div>
+
+   <form (ngSubmit)="sendMessage()">
+      <input autocomplete="off" class="txt-box-chat" name="content" type="text" [(ngModel)]="messContent" placeholder="nhập nội dung...">
+      <button class="btn-box-chat">
+         <i class="fa fa-paper-plane" aria-hidden="true"></i>
+      </button>
+   </form>
+</div>

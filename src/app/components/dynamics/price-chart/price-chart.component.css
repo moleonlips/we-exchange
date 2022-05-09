@@ -1,7 +1,12 @@
 .btn-update {
-     background-color: #ca7a11;
-     color: #fff;
+     background-color: unset;
+     color: #ffb400;
      font-weight: bold;
+     border: 1px solid #ffb400;
+}
+
+.btn-update:hover {
+     background-color: #ffb30049;
 }
 
 h6 {

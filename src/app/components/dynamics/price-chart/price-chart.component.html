@@ -12,30 +12,39 @@
      <div class="container" style="background-color: rgb(255, 255, 255)">
           <div class="row flex-wrap justify-content-center p-2">
                <div class="col-4 p-2">
-                    <select name="" id="" class="form-control col-12 p-0">
-                         <option value="">Thành phố</option>
-                         <option value="">TP Hồ Chí Minh</option>
-                         <option value="">Hà Nội</option>
+                    <select class="form-control col-12"
+                         onfocus='this.size=8;'
+                         onblur='this.size=1;'
+                         onchange='this.size=1; this.blur();'
+                         (change)="provinceChange($event)"
+                    >
+                         <option>Tỉnh / thành phố</option>
+                         <option value="{{item.id}}" *ngFor="let item of provinces">{{item.name}}</option>
                     </select>
                </div>
                <div class="col-4 p-2">
-                    <select name="" id="" class="form-control col-12 p-0">
-                         <option value="">Quận/huyện</option>
-                         <option value="">...</option>
-                         <option value="">...</option>
+                    <select name="" id="" class="form-control col-12" [disabled]="districts.length == 0"
+                         onfocus='this.size=8;'
+                         onblur='this.size=1;'
+                         onchange='this.size=1; this.blur();'
+                    >
+                         <option value="">Quận / huyện</option>
+                         <option value="item.name" *ngFor="let item of districts">{{item.name}}</option>
                     </select>
                </div>
                <div class="col-4 p-2">
-                    <select name="" id="" class="form-control col-12 p-0">
+                    <select name="" id="tranzaction" class="form-control col-12">
                          <option value="">Loại hình bất động sản</option>
-                         <option value="">Nhà ở</option>
-                         <option value="">Căn hộ / Chung cư</option>
+                         <option value="{{item.cateName}}" *ngFor="let item of categories">{{item.cateName}}</option>
                     </select>
                </div>
                
                <div class="col-4 p-2">
-                    <button class="col-12 btn btn-update">
-                         Xem ngay
+                    <button class="col-12 btn btn-update" (click)="analyzeNow()" [disabled]="!analyzeBtn">
+                         <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M8.26853 3.19018C10.1716 2.16813 12.3544 1.78977 14.4903 2.11169C16.6263 2.43362 18.6006 3.43854 20.1179 4.97608C21.6351 6.51361 22.6137 8.50111 22.9072 10.6412C23.1484 12.3996 22.9164 14.1833 22.2451 15.8116L21.328 13.0073L20.0004 19.4546L26.4624 18.2004L23.7727 17.2868C24.8226 15.1475 25.2137 12.7393 24.8887 10.3694C24.5365 7.80133 23.3622 5.41633 21.5415 3.57129C19.7208 1.72624 17.3516 0.520344 14.7884 0.13403C12.2252 -0.252285 9.60586 0.201754 7.32224 1.42821L8.26853 3.19018ZM17.8944 20.7204C15.9991 21.7842 13.8088 22.2015 11.6551 21.9092C9.50144 21.6169 7.50162 20.6309 5.9584 19.1004C4.41518 17.57 3.41258 15.5784 3.10238 13.4273C2.83828 11.5958 3.0883 9.73357 3.81515 8.04544L4.8 11L6 5L0 6.2L2.13258 6.91086C1.14209 9.0259 0.787905 11.39 1.12285 13.7127C1.4951 16.2941 2.69822 18.684 4.55008 20.5205C6.40195 22.357 8.80173 23.5402 11.3861 23.891C13.9706 24.2418 16.5989 23.741 18.8733 22.4645L17.8944 20.7204Z" fill="#E49824"/>
+                              </svg>                              
+                         Phân tích
                     </button>
                </div>
           </div>
@@ -44,8 +53,12 @@
      <div class="container" style="background-color: #fff;">
           <h6 class="p-1 pt-3 pb-3">Tham khảo giá bất động sản Thành phố Hồ Chí Minh</h6>
           <div class="row p-1">
-               <a *ngFor="let item of locations, let i = index" href="/{{i}}" class="col-2" title="{{item}}">
-                    > {{item | limitString:16}}
+               <a *ngFor="let item of districtsOfHCM, let i = index" href="/{{i}}" class="col-2" title="{{item.name}}">
+                    <svg width="16" height="25" viewBox="0 0 16 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M16 8.66003C16 13.0783 13 17 8 24.34C3 17 0 13.0783 0 8.66003C0 4.24176 3.58172 0.660034 8 0.660034C12.4183 0.660034 16 4.24176 16 8.66003Z" fill="#E49824"/>
+                         <circle cx="8.00009" cy="8.66" r="4.16" fill="white"/>
+                         </svg>                                                
+                    {{item.name | limitString:16}}
                </a>
           </div>
      </div>
@@ -53,8 +66,12 @@
      <div class="container" style="background-color: #fff;">
           <h6 class="p-1 pt-3 pb-3">Tham khảo giá bất động sản Thành phố Hà Nội</h6>
           <div class="row p-1">
-               <a *ngFor="let item of locations, let i = index" href="/{{i}}" class="col-2" title="{{item}}">
-                    > {{item | limitString:16}}
+               <a *ngFor="let item of districtsOfHanoi, let i = index" href="/{{i}}" class="col-2" title="{{item.name}}">
+                    <svg width="16" height="25" viewBox="0 0 16 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M16 8.66003C16 13.0783 13 17 8 24.34C3 17 0 13.0783 0 8.66003C0 4.24176 3.58172 0.660034 8 0.660034C12.4183 0.660034 16 4.24176 16 8.66003Z" fill="#E49824"/>
+                         <circle cx="8.00009" cy="8.66" r="4.16" fill="white"/>
+                         </svg>
+                    {{item.name | limitString:16}}
                </a>
           </div>
      </div>

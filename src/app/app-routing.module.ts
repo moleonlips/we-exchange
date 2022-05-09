@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './components/dynamics/chat/chat.component';
 import { DetailChatComponent } from './components/dynamics/chat/detail-chat/detail-chat.component';
+import { FilterItemComponent } from './components/dynamics/filter/filter-item/filter-item.component';
 import { FilterComponent } from './components/dynamics/filter/filter.component';
 import { HomeComponent } from './components/dynamics/home/home.component';
 import { PostUpComponent } from './components/dynamics/post-up/post-up.component';
@@ -25,13 +26,23 @@ const routes: Routes = [
   {
     path: 'filter',
     component: FilterComponent,
+    children: [
+      {
+        path: 'mua-ban/:param',
+        component: FilterItemComponent
+      },
+      {
+        path: 'cho-thue/:param',
+        component: FilterItemComponent
+      }
+    ]
   },
   {
     path: 'post-up',
     component: PostUpComponent,
   },
   {
-    path: 'product-detail',
+    path: 'product-detail/:param',
     component: ProductDetailComponent,
   },
   {

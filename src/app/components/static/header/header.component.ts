@@ -4,6 +4,8 @@ import { Districts } from 'src/app/models/districts.model';
 import { Provinces } from 'src/app/models/provinces.model';
 import { User } from 'src/app/models/user.model';
 import { SharedService } from 'src/app/services/shared/shared.service';
+import { SocketService } from '../../../services/socket/socket.service';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private service: SharedService
+    private service: SharedService,
+    private socketService: SocketService
   ) { }
 
   provinces!: Provinces[]
@@ -28,13 +31,17 @@ export class HeaderComponent implements OnInit {
   loginForm!: FormGroup
   cfmPassWord = ''
   currentUser!: User
+  numberOfConnection!: number
+  socket: any;
 
   ngOnInit(): void {
-    if(Boolean(JSON.parse(localStorage.getItem('currentUser')!))){
+    this.socket = io.io(`localhost:3000`)
+
+    if (Boolean(JSON.parse(localStorage.getItem('currentUser')!))) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser')!);
       this.loged = true
     }
-    
+
     this.registerForm = this.fb.group({
       id: this.fb.control(0),
       username: this.fb.control('', [Validators.required, Validators.minLength(8)]),
@@ -58,6 +65,9 @@ export class HeaderComponent implements OnInit {
       this.provinces = data
     })
 
+    this.socket.on('number-of-connections', (data: number) => {
+      this.numberOfConnection = data
+    })
   }
 
   provinceSelected(event: any) {
@@ -77,7 +87,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onRegister(value: User) {
-    if(this.cfmPassWord === this.registerForm.get('password')?.value){
+    if (this.cfmPassWord === this.registerForm.get('password')?.value) {
       this.service.onRegister(value).subscribe(() => {
         alert('Thêm thành công!\n' + JSON.stringify(value))
         location.reload();
@@ -85,13 +95,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  onLogin(value: any){
-    this.service.getAllUsers().subscribe((data:User[]) => {
-      let x = data.filter((a:User) => {
+  onLogin(value: any) {
+    this.service.getAllUsers().subscribe((data: User[]) => {
+      let x = data.filter((a: User) => {
         return (a.username === value.usernameL && a.password === value.passwordL)
       })
 
-      if(x.length === 1) {
+      if (x.length === 1) {
         alert(`Welcome back ${x[0].fullname}!`)
         localStorage.setItem('currentUser', JSON.stringify(x[0]))
         this.loged = true;

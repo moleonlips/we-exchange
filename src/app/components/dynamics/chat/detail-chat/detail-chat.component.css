@@ -1,0 +1,84 @@
+.chat-zone-detail {
+   position: relative;
+   height: 100%;
+   width: 100%;
+}
+
+.converstaion-content{
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 50px;
+   background-color: #fff;
+}
+
+.chat-zone-detail form {
+   position: absolute;
+   bottom: 0;
+   left: 0;right: 0;
+   height: 50px;
+   border-top: 1px #666 solid;
+}
+
+.txt-box-chat {
+   height: 100%;
+   padding: 10px;
+   width: 100%;
+   border: none;
+   outline: none;
+}
+
+.btn-box-chat{
+   position: absolute;
+   right: 0;
+   height: 100%;
+   width: 50px;
+   border: none;
+   background-color: orange;
+   color: #fff
+}
+
+.about-product{
+   position: absolute;
+   top: 0; left: 0; right: 0;
+   height: 100px;
+}
+
+.author{
+   height: 50px;
+   padding-left: 5px;
+   border-bottom: 1px rgb(221, 221, 221) solid;
+}
+.author img{
+   height: 40px;
+   width: 40px;
+   border-radius: 50%;
+}
+
+.the-product{
+   height: 80px;
+   border-bottom: 1px rgb(221, 221, 221) solid;
+   box-shadow: 0px 7px 20px -15px;
+}
+
+.messages{
+   overflow: auto;
+   height: calc(100% - 125px);
+   margin-top: 130px;
+   padding: 5px 10px;
+}
+
+.mind{
+   float: right;
+}
+
+.messages div {
+   height: 40px;
+}
+
+.mess-line span{
+   background-color: #ffb400;
+   padding: 5px 10px;
+   max-width: 50%;
+}

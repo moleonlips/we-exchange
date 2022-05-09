@@ -1,0 +1,104 @@
+<div class="container pt-3">
+     <div class="bread-crumb pb-3">
+          <a [routerLink]="[ '/' ]">Trang chủ</a> \ <a [routerLink]="[ '/filter' ]">{{urlResting[2] | convertUrl}} \
+               {{urlResting[3] | convertUrl}}</a>
+     </div>
+</div>
+
+<div class="container">
+     <div class="order-filte row col-12 pr-0">
+          <div class="col-8" style="background-color: #fff">
+               <div class="row">
+                    <div class="order-filter-info col-8">
+                         <div class="row p-0">
+                              <div (click)="activeFilter($event)" class="order-filter-item active col-4 p-2">Tất cả
+                              </div>
+                              <div (click)="activeFilter($event)" class="order-filter-item col-4 p-2">Cá nhân</div>
+                              <div (click)="activeFilter($event)" class="order-filter-item col-4 p-2">Môi giới</div>
+                         </div>
+                    </div>
+                    <div class="order-filter-sort col-4">
+                         <div class="row justify-content-end">
+                              <div class="adv-sort p-2">
+                                   {{defaultOrder}} <i class="fa-solid fa-angle-down"></i>
+                                   <ul class="sort-item list">
+                                        <li (click)="sortBy($event)">Ngẫu nhiên</li>
+                                        <li (click)="sortBy($event)">Tin mới trước</li>
+                                        <li (click)="sortBy($event)">Giá thấp trước</li>
+                                   </ul>
+                              </div>
+                              <div>
+                                   <button (click)="changeViewMode()" *ngIf="viewMode"
+                                        class="btn-viewmode view-mode-list" title="Xem dạng danh sách"></button>
+                                   <button (click)="changeViewMode()" *ngIf="!viewMode"
+                                        class="btn-viewmode view-mode-grid" title="Xem dạng lưới"></button>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="row mt-2 pb-2">
+                    <!-- view mode list -->
+                    <div class="col-12" *ngIf="viewMode">
+                         <div class="row">
+
+                              <!-- loop at here -->
+                              <div class="col-12 mb-2" *ngFor="let item of listPrd">
+                                   <a href="/product-detail/{{item.id}}">
+                                        <div class="row prd-item p-2">
+                                             <div class="col-3 p-0">
+                                                  <div style="height: 133px; width: 100%; display: flex;
+                                                       justify-content: center; overflow: hidden;
+                                                       background-color: rgb(179, 179, 179);">
+                                                       <img [src]="baseUrl + item.thumbnail" alt=""
+                                                            style="height: 100%; width: auto;">
+                                                  </div>
+                                             </div>
+                                             <div class="detail-info p-2">
+                                                  <p class="detail-title">{{item.title}}</p>
+                                                  <p class="detail-size">{{item.size}}m<sup>2</sup> {{item.badroom? '- ' + item.badroom + ' phòng ngủ': ''}}</p>
+                                                  <p class="detail-price">{{item.ppmm | currency:'VND'}}
+                                                       {{item.tranzaction === 'Cho thuê'? '/ tháng': ''}}</p>
+                                                  <p class="detail-author">{{item.postOn | date: 'dd/MM/yyyy'}} - {{item.ward}} - {{item.district}} -
+                                                       {{item.city}}</p>
+                                             </div>
+                                        </div>
+                                   </a>
+                              </div>
+                         </div>
+                    </div>
+
+                    <!-- view mode grid -->
+                    <div class="col-12" *ngIf="!viewMode">
+                         <div class="row">
+                              <!-- item -->
+                              <div class="col-4 prd-item pt-3" *ngFor="let item of listPrd">
+                                   <a href="/product-detail/{{item.id}}">
+                                        <div class="row detail-info">
+                                             <div class="col-12">
+                                                  <div class="img-container-grid">
+                                                       <img [src]="baseUrl + item.thumbnail" alt=""
+                                                       style="height: 100%; width: auto;">
+                                                  </div>
+                                             </div>
+
+                                             <p class="col-12 detail-title mt-2" style="height: 18px" [title]="item.title">{{item.title | limitString: 31}}</p>
+                                             <p class="col-12 detail-size">{{item.size}}m<sup>2</sup> -
+                                                  {{item.badroom}}PN</p>
+                                             <p class="col-12 detail-price">{{item.ppmm | currency:'VND'}}
+                                                  {{item.tranzaction === 'Cho thuê'? '/ tháng': ''}}</p>
+                                             <p class="col-12 detail-author" [title]="item.ward + ' - ' + item.district + ' - ' + item.city">{{item.postOn | date: 'dd/MM/yyyy'}} - {{item.ward + ' - ' + item.district + ' - ' + item.city | limitString: 20}}</p>
+                                        </div>
+                                   </a>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+          <!-- banner quang cao -->
+          <div class="ads-zone col-4 p-0 pl-3">
+               <img src="../../../../assets/img/banner/banner-small.gif" class="col-12" alt="">
+               <img src="../../../../assets/img/banner/bat-dong-san.jpg" class="col-12 mt-3" alt="">
+          </div>
+     </div>
+</div>

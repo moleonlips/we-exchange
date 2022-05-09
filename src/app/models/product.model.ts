@@ -27,4 +27,5 @@ export class Product {
      type!: string
      legality!: string
      active!: boolean
+     thumbnail!: string
 }

@@ -4,6 +4,7 @@ import { Categories } from 'src/app/models/categories.model';
 import { Districts } from 'src/app/models/districts.model';
 import { Provinces } from 'src/app/models/provinces.model';
 import { SharedService } from 'src/app/services/shared/shared.service';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-post-up',
@@ -139,6 +140,79 @@ export class PostUpComponent implements OnInit {
       lat: 20.932274230634885,
       lng: 106.02574701949538
     },
+    {
+      lat: 20.85383486455193,
+      lng: 106.6855738416119
+    },
+    {
+      lat: 20.85649264185438,
+      lng: 106.69041035734236
+    },
+    {
+      lat: 20.85172731968966,
+      lng: 106.69351833920878
+    },
+    {
+      lat: 20.854956514654297,
+      lng: 106.70416252991792
+    },
+    {
+      lat: 20.856463092472413,
+      lng: 106.70579960269967
+    },
+    {
+      lat: 20.941806084419248,
+      lng: 105.9370204929758
+    },
+    {
+      lat: 20.94084465985185,
+      lng: 105.93711131740201
+    },
+    {
+      lat: 20.94171586592127,
+      lng: 105.9389348075984
+    },
+    {
+      lat: 20.926635405409986,
+      lng: 105.92724287295127
+    },
+    {
+      lat: 20.920814193378675,
+      lng: 105.93130670745299
+    },
+    {
+      lat: 21.03289495552344,
+      lng: 105.81887122749576
+    },
+    {
+      lat: 21.034814441756392,
+      lng: 105.826885262279
+    },
+    {
+      lat: 21.034042430084966,
+      lng: 105.82763849943063
+    },
+    {
+      lat: 21.046805492806094,
+      lng: 105.8038511348908
+    },
+    {
+      lat: 21.045365635028652,
+      lng: 105.80698315157889
+    },
+    {
+      lat: 21.054202085460197,
+      lng: 105.79222431032248
+    },
+    {
+      lat: 21.05286108138765,
+      lng: 105.79593364435638
+    },
+    {
+      lat: 21.05148719236279,
+      lng: 105.88555712547662
+    },
+
   ];
 
   categories!: Categories[]
@@ -195,10 +269,6 @@ export class PostUpComponent implements OnInit {
     this.getHintData()
   }
 
-  ngOnDestroy(): void {
-    console.log('destroyed!')
-  }
-
   getHintData() {
     this.service.getCategories().subscribe(cate => {
       this.service.getProvince().subscribe(province => {
@@ -228,33 +298,35 @@ export class PostUpComponent implements OnInit {
       longi: this.lng,
       lati: this.lat,
       userID: this.userID_L,
+      thumbnail: this.arrImg[0],
       id: Math.random()
     }
 
-    this.service.postProduct(rs).subscribe(() => {
-      this.arrImg.forEach((path: string, index: number) => {
-        let pic = {
-          id: 0,
-          url: path,
-          productID: rs.id,
-          isThumbnail: index == 0 ? true : false,
-        }
-        this.service.postPictures(pic).subscribe(() => { return null; })
+    let upProductPromise = new Promise((resolve, reject) => {
+      this.service.postProduct(rs).subscribe(() => {
+        resolve(rs.id);
       })
-      alert('Thêm thành công!')
     })
-    // let imgs = this.arrImg.map((img:string) => {
-    //   return (
-    //     {
-    //       id: 0,
-    //       productID: rs.id,
-    //       path: img
-    //     }
-    //   )
-    // })
-    // console.log(rs);
-    // console.log(imgs);
-    document.location.reload();
+
+    upProductPromise
+      .then((productID) => {
+        this.arrImg.forEach((path: string, index: number) => {
+          let picture = {
+            id: 0,
+            url: path,
+            productID: Number(productID),
+            isThumbnail: index == 0 ? true : false,
+          }
+          console.log(picture);
+
+          this.service.postPictures(picture).subscribe(data => {
+          })
+
+        })
+        
+        alert('Đăng tin thành công!');
+        document.location.reload();
+      })
   }
 
   numberConvert(str: string) {

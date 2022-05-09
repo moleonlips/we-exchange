@@ -72,6 +72,23 @@
      opacity: 1;
 }
 
+button.visible{
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%)
+}
+
+button#prev-btn{
+     left: 10px;
+}
+button#next-btn{
+     right: 10px;
+}
+
+.product-tag{
+     width: 20%;
+}
+
 .txt-price{
      color: rgb(216, 40, 40)
 }
@@ -134,4 +151,16 @@ agm-map{
 .btn-message{
      background-color: #faa83d;
      color: #fff
+}
+
+.date-place{
+     height: 40px
+}
+
+.render-zone p{
+     line-height: 20px !important;
+}
+
+.detail-img:hover {
+     cursor: zoom-in;
 }

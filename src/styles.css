@@ -212,3 +212,7 @@ p.date-place {
      width: 100%;
      display: block;
 }
+
+div.ql-editor.ql-blank {
+     height: 300px;
+}

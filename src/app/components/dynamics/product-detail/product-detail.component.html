@@ -1,14 +1,14 @@
 <div class="container-fluid pt-3 pb-3" style="background-color: #ececec">
      <div class="container" style="background-color: #fff; padding: 10px 20px;">
           <div class="row">
-               <div class="col-12 mb-2 p-0">
+               <div class="col-12 mb-2 p-0" *ngIf="currentPrd">
                     <a routerLink="/home">Trang chủ</a>
-                    \ <a routerLink="/home">Cho thuê</a>
-                    \ <a routerLink="/home">Căn hộ - Chung cư</a>
-                    \ <a routerLink="/home">Hà Nội</a>
+                    \ <a routerLink="/home">{{currentPrd.tranzaction==='Cho thuê'? 'Cho thuê': 'Mua bán'}}</a>
+                    \ <a routerLink="/home">{{currentPrd.type}}</a>
+                    \ <a routerLink="/home">{{currentPrd.city}}</a>
                </div>
                <div class="col-8">
-                    <div class="row image-container justify-content-between align-items-center">
+                    <div class="row image-container justify-content-center align-items-center overflow-hidden">
                          <!-- prev button -->
                          <button class="visible" id="prev-btn">
                               <i class="fa-solid fa-caret-left"></i>
@@ -16,8 +16,15 @@
 
                          <!-- loop at here -->
                          <img class="detail-img" title="Hình {{i + 1}}" *ngFor="let item of imgs, let i = index"
-                              src="../../../../assets/img/details/{{item}}" alt="">
+                              [src]="baseUrl + item.url" alt="" 
+                              (click)="showLightbox(i)" >
 
+                         <ng-image-fullscreen-view
+                              [images] = "imageObject"
+                              [imageIndex] = "selectedImageIndex"
+                              [show]="showFlag"
+                              (close)="closeEventHandler()"
+                         ></ng-image-fullscreen-view>
                          <!-- next button -->
                          <button class="visible" id="next-btn">
                               <i class="fa-solid fa-caret-right"></i>
@@ -30,13 +37,13 @@
                          </div>
                     </div>
 
-                    <div class="row mt-2">
+                    <div class="row mt-2" *ngIf="currentPrd">
                          <!-- title -->
-                         <h5 class="col-12 p-0">Đất lọt khe khu phân lô, 48m2, đường 6m</h5>
+                         <h5 class="col-12 p-0">{{currentPrd.title}}</h5>
 
                          <!-- price and size -->
                          <p class="col-12 p-0">
-                              <b class="txt-price">3,2 tỷ</b> - <b>.........</b>
+                              <b class="txt-price">{{currentPrd.ppmm | currency: 'VND'}} {{currentPrd.tranzaction === 'Cho thuê'? '/ tháng': ''}}</b>
                          </p>
 
                          <!-- hỗ trợ trả góp -->
@@ -55,123 +62,143 @@
                                         src="https://static.chotot.com/storage/icons/logos/ad-param/location.svg"
                                         alt="">
                               </span>
-                              <a href="#">140, Vườn Lài, Phường An Phú Đông, Quận 12, Tp Hồ Chí Minh</a>
+                              <a href="#">{{currentPrd.ward}}, {{currentPrd.district}}, {{currentPrd.city}}</a>
                          </div>
 
                          <!-- mô tả bất động sản -->
-                         <h6 class="mt-3">Mô tả:</h6>
-                         <p class="text-justify">
-                              đất lọt khe khu phân lô vườn lài AN phú Đông Quận 12 gần cầu APĐ hướng đi Gv rất gần!
-                              ĐT 4 x 12 sổ Công nhận đủ khu phân lô xây dựng tự do, Đg 5m thông, hai bên đã cất nhà! Vị
-                              trí đất nằm ngay bên trường mầm non Sơn ca 8, hướng nhìn ra sông Vàm thuật!
-                              Giá nhanh nhẹn 3ty2 bớt ít cho khách thiện chí!
-                         </p>
+                         <div class="render-zone mt-3" *ngIf="currentPrd.description" [innerHTML]="currentPrd.description"></div>
+
+                         <!-- <p class="text-justify">
+                              {{currentPrd.description}}
+                         </p> -->
 
                          <!-- thông tin liên lạc -->
-                         <p><b>Thông tin liên hệ: </b> <a href="tel:+8475603561">0375603561</a></p>
-
+                         <p *ngIf="author"><b>Thông tin liên hệ: </b> <a href="tel:+{{author.phone}}">{{author.phone | phone}}</a></p>
                          <!-- thông số bất động sản -->
                          <div class="col-12 p-0">
                               <div class="row">
                                    <!-- size -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.size">
                                         <span class="h">
                                              <img class="info-icons" src="../../../../assets/img/info-icon/size.png"
                                                   alt="">
                                         </span>
-                                        Diện tích đất: <b>.........</b>
+                                        Diện tích: <b>{{currentPrd.size}} m<sup>2</sup></b>
                                    </div>
                                    <!-- cho thuê -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.tranzaction">
                                         <span class="h">
                                              <img class="info-icons" src="../../../../assets/img/info-icon/cho-thue.png"
                                                   alt="">
                                         </span>
-                                        Cho thuê
+                                        {{currentPrd.tranzaction}}
                                    </div>
                                    <!-- Đặc điểm -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.iscorner">
                                         <span class="h">
                                              <img class="info-icons" src="../../../../assets/img/info-icon/dac-diem.png"
                                                   alt="">
                                         </span>
-                                        Đặc điểm: <b>.........</b>
+                                        Đặc điểm: <b>Căn góc</b>
                                    </div>
                                    <!-- Giá mét vuông -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.tranzaction === 'Cần bán'">
                                         <span class="h">
                                              <img class="info-icons"
                                                   src="../../../../assets/img/info-icon/gia-met-vuong.png" alt="">
                                         </span>
-                                        Giá / mét vuông: <b>.........</b>
+                                        Giá / mét vuông: <b class="text-danger">{{currentPrd.ppmm/currentPrd.size | currency:'VND'}}</b>
+                                   </div>
+                                   <div class="col-6 k" *ngIf="currentPrd.tranzaction === 'Cho thuê'">
+                                        <span class="h">
+                                             <img class="info-icons"
+                                                  src="../../../../assets/img/info-icon/gia-met-vuong.png" alt="">
+                                        </span>
+                                        Giá: <b class="text-danger">{{currentPrd.ppmm | currency:'VND'}} / tháng</b>
                                    </div>
                                    <!-- tình trạng giấy tờ -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.legality">
                                         <span class="h">
                                              <img class="info-icons" src="../../../../assets/img/info-icon/giay-to.png"
                                                   alt="">
                                         </span>
-                                        Tình trạng giấy tờ: <b>.........</b>
+                                        Tình trạng giấy tờ: <b>{{currentPrd.legality}}</b>
                                    </div>
                                    <!-- hướng ban công -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.balcony">
                                         <span class="h">
                                              <img class="info-icons"
                                                   src="../../../../assets/img/info-icon/huong-ban-cong.png" alt="">
                                         </span>
-                                        Hướng ban công: <b>.........</b>
+                                        Hướng ban công: <b>{{currentPrd.balcony}}</b>
+                                   </div>
+                                   <!-- Nội thất -->
+                                   <div class="col-6 k" *ngIf="currentPrd.interior">
+                                        <span class="h">
+                                             <img class="info-icons"
+                                                  src="../../../../assets/img/info-icon/dac-diem.png" alt="">
+                                        </span>
+                                        Nội thất: <b>{{currentPrd.interior}}</b>
                                    </div>
                                    <!-- hướng cửa chính -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.maindirect">
                                         <span class="h">
                                              <img class="info-icons"
                                                   src="../../../../assets/img/info-icon/huong-cua.png" alt="">
                                         </span>
-                                        Hướng cửa chính: <b>.........</b>
+                                        Hướng cửa chính: <b>{{currentPrd.maindirect}}</b>
                                    </div>
                                    <!-- Loại hình -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.type">
                                         <span class="h">
                                              <img class="info-icons"
                                                   src="../../../../assets/img/info-icon/loai-hinh.png" alt="">
                                         </span>
-                                        Loại hình bất động sản: <b>.........</b>
+                                        Loại hình bất động sản: <b>{{currentPrd.type}}</b>
                                    </div>
                                    <!-- số phòng ngủ -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.badroom">
                                         <span class="h">
                                              <img class="info-icons"
                                                   src="../../../../assets/img/info-icon/phong-ngu.png" alt="">
                                         </span>
-                                        Số phòng ngủ: <b>.........</b>
+                                        Số phòng ngủ: <b>{{currentPrd.badroom}}</b>
                                    </div>
                                    <!-- số tầng -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.floor">
                                         <span class="h">
                                              <img class="info-icons" src="../../../../assets/img/info-icon/so-tang.png"
                                                   alt="">
                                         </span>
-                                        Tầng: <b>.........</b>
+                                        Tầng: <b>{{currentPrd.floor}}</b>
                                    </div>
                                    <!-- số tiền cọc -->
-                                   <div class="col-6 k">
+                                   <div class="col-6 k" *ngIf="currentPrd.deposit">
                                         <span class="h">
                                              <img class="info-icons"
-                                                  src="../../../../assets/img/info-icon/so-tien-coc.png" alt="">
+                                                  src="../../../../assets/img/info-icon/so-tien-coc.png"
+                                                  alt="">
                                         </span>
-                                        Số tiền cọc: <b>.........</b>
+                                        Số tiền cọc: <b>{{currentPrd.deposit | currency:'VND'}}</b>
                                    </div>
                               </div>
                          </div>
 
-                         <h6 class="mt-3">Chat nhanh với người bán</h6>
-                         <div class="quick-chat-container">
-                              <div style="width: auto; width: 1120px;">
+                         <div class="quick-chat-container mt-3">
+                              <h6 class="mt-3">Chat nhanh với người bán</h6>
+                              <div style="width: auto; width: 1120px;" *ngIf="currentPrd.tranzaction === 'Cần bán'">
                                    <span class="btn" (click)="quickChat($event)">Tư vấn cho tôi với!</span>
                                    <span class="btn" (click)="quickChat($event)">Căn hộ này còn không?</span>
                                    <span class="btn" (click)="quickChat($event)">Tình trạng giấy tờ thế nào ạ?</span>
                                    <span class="btn" (click)="quickChat($event)">Tôi có thể trả góp không?</span>
                                    <span class="btn" (click)="quickChat($event)">Có chỗ đậu xe không?</span>
+                              </div>
+                              <div style="width: auto; width: 1120px;" *ngIf="currentPrd.tranzaction === 'Cho thuê'">
+                                   <span class="btn" (click)="quickChat($event)">Thời gian thuê tối đa là bao lâu ạ!</span>
+                                   <span class="btn" (click)="quickChat($event)">Ở ghép tối đa bai nhiêu người ạ?</span>
+                                   <span class="btn" (click)="quickChat($event)">Có chỗ để ô tô không?</span>
+                                   <span class="btn" (click)="quickChat($event)">An ninh thế nào ạ?</span>
+                                   <span class="btn" (click)="quickChat($event)">Có hỗ trợ chuyển đồ k?</span>
                               </div>
                          </div>
                     </div>
@@ -185,7 +212,7 @@
                                         <img src="../../../../assets/img/avt.png" alt="">
                                    </div>
                                    <div class="ml-3 d-flex flex-column justify-content-around">
-                                        <b>Lý Tuấn Đức</b>
+                                        <b *ngIf="author">{{author.fullname}}</b>
                                         <span class="text-success">
                                              <i class="fa-solid fa-circle"></i>
                                              Đang hoạt động
@@ -200,20 +227,20 @@
                          </div>
 
                          <!-- call now -->
-                         <div class="col-12">
-                              <a href="tel:0375603561" class="mb-1 col-12 btn btn-success">
+                         <div class="col-12" *ngIf="author">
+                              <a href="tel:{{author.phone}}" class="mb-1 col-12 btn btn-success">
                                    <i class="fa-solid fa-phone"></i> Call now
                               </a>
-                              <a href="https://zalo.me/0375603561" class="mb-1 col-12 btn btn-primary">
+                              <a href="https://zalo.me/{{author.phone}}" class="mb-1 col-12 btn btn-primary">
                                    <i class="fa-solid fa-circle-z"></i> Zalo
                               </a>
                               <button class="mb-1 col-12 btn btn-message" (click)="onChat()">Nhắn tin</button>
                          </div>
 
                          <!-- location on the maps -->
-                         <div class="col-12">
-                              <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng" class="maps-zone">
-                                   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                         <div class="col-12" *ngIf="currentPrd">
+                              <agm-map [zoom]="15" [latitude]="currentPrd.lati" [longitude]="currentPrd.longi" class="maps-zone">
+                                   <agm-marker [latitude]="currentPrd.lati" [longitude]="currentPrd.longi"></agm-marker>
                               </agm-map>
                          </div>
                     </div>
@@ -222,79 +249,32 @@
                     <img class="col-12 p-0 mt-3" src="../../../../assets/img/banner/300x2-adx621d9e9903908.gif" alt="">
                </div>
 
-               <div class="col-12 mb-2 p-0">
+               <div class="col-12 mb-2 p-0" *ngIf="listOfRecommendations && listOfRecommendations.length > 0">
                     <div class="container-fluid gray-bg p-0">
                          <div class="container bg-white p-0">
                               <h6 class="pt-3">Các sản phẩm tương tự</h6>
-                                   <div class="d-flex align-items-center pb-3">
-                                        <div class="product-tag text-justify">
-                                             <a href="/product-detail">
-                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
-                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
-                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
-                                                  <p class="product-price">900 triệu</p>
-                                                  <p class="date-place">
-                                                       <span>3 phút trước</span> -
-                                                       <span>TP. Hồ Chí Minh</span>
-                                                  </p>
-                                             </a>
-                                        </div>
-                    
-                                        <div class="product-tag text-justify">
-                                             <a href="/product-detail">
-                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
-                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
-                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
-                                                  <p class="product-price">900 triệu</p>
-                                                  <p class="date-place">
-                                                       <span>3 phút trước</span> -
-                                                       <span>TP. Hồ Chí Minh</span>
-                                                  </p>
-                                             </a>
-                                        </div>
-                    
-                                        <div class="product-tag text-justify">
-                                             <a href="/product-detail">
-                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
-                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
-                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
-                                                  <p class="product-price">900 triệu</p>
-                                                  <p class="date-place">
-                                                       <span>3 phút trước</span> -
-                                                       <span>TP. Hồ Chí Minh</span>
-                                                  </p>
-                                             </a>
-                                        </div>
-                    
-                                        <div class="product-tag text-justify">
-                                             <a href="/product-detail">
-                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
-                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
-                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
-                                                  <p class="product-price">900 triệu</p>
-                                                  <p class="date-place">
-                                                       <span>3 phút trước</span> -
-                                                       <span>TP. Hồ Chí Minh</span>
-                                                  </p>
-                                             </a>
-                                        </div>
-                    
-                                        <div class="product-tag text-justify">
-                                             <a href="/product-detail">
-                                                  <img src="../../../../assets/img/products/lands.jpg" alt="">
-                                                  <p class="product-title">Đất vườn Nhuận Đức - Củ Chi, 900tr, sổ hồng riêng</p>
-                                                  <p class="product-info">663 <span>m<sup>2</sup></span></p>
-                                                  <p class="product-price">900 triệu</p>
-                                                  <p class="date-place">
-                                                       <span>3 phút trước</span> -
-                                                       <span>TP. Hồ Chí Minh</span>
-                                                  </p>
-                                             </a>
-                                        </div>
+                              <div class="row align-items-center pb-3 col-12 p-0 m-0">
+                                   <div class="product-tag text-justify" *ngFor="let item of listOfRecommendations">
+                                        <a *ngIf="item" href="/product-detail/{{item.id}}" [title]="item.title">
+                                             <div
+                                                  style="height: 190px; width: 100%; display: flex; justify-content: center; overflow: hidden; background-color: rgb(179, 179, 179);">
+                                                  <img [src]="baseUrl + item.thumbnail" alt="" style="height: 100%; width: auto;">
+                                             </div>
+                                             <p class="product-title" style="height:40px">{{item.title | maxLength: 40}} {{item.title.length
+                                                  > 40? '...': ''}}</p>
+                                             <p class="product-info">{{item.size}}<span>m<sup>2</sup></span></p>
+                                             <p class="product-price">{{item.ppmm | currency: "VND"}} {{item.tranzaction === 'Cho thuê'? '/ tháng': ''}}</p>
+                                             <p class="date-place">
+                                                  <span>{{item.postOn | date}}</span> -
+                                                  <span>{{item.city}}</span>
+                                             </p>
+                                        </a>
                                    </div>
-                                   <div class="col-12 p-0">
-                                        <a href="#" class="cate-detail">Xem thêm 250.890 tin đăng mua bán >></a>
-                                   </div>
+                                   
+                              </div>
+                              <div class="col-12 p-0" *ngIf="listOfRecommendations.length > originQtt">
+                                   <button class="link cate-detail" (click)="lazyFake()">Xem thêm 250.890 tin đăng mua bán >></button>
+                              </div>
                          </div>
                     </div>
                </div>
@@ -307,7 +287,7 @@
      <div class="head-bxc">
           <span>
                <img src="../../../../assets/img/avt.png" alt="">
-               <b>Ly Tuan Duc</b>
+               <b *ngIf="author">{{author.fullname}}</b>
           </span>
           <span class="kf">
                <button>-</button>
@@ -316,9 +296,9 @@
      </div>
 
      <div class="body-bxc">
-          <div *ngFor="let item of messages" [class]="item.auth? 'is-auth': ''">
-               <span title="{{item.date | date: 'hh:mm:ss - dd/MM/yyyy'}}">
-                    {{item.content}}
+          <div *ngFor="let item of messages" [class]="item.senderID === currentUser.id? 'is-auth': ''">
+               <span title="{{item.timesend | date: 'hh:mm:ss - dd/MM/yyyy'}}">
+                    {{item.contents}}
                </span>
           </div>
      </div>

@@ -25,6 +25,23 @@ import { ProductDetailComponent } from './components/dynamics/product-detail/pro
 import { ChildrenComponent } from './components/dynamics/projects/children/children.component';
 import { ChatComponent } from './components/dynamics/chat/chat.component';
 import { DetailChatComponent } from './components/dynamics/chat/detail-chat/detail-chat.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { QuillModule } from 'ngx-quill';
+
+import { environment } from './environment/environment';
+import { MaxLengthPipe } from './Pipes/max-length.pipe';
+import { FilterItemComponent } from './components/dynamics/filter/filter-item/filter-item.component';
+import { ConvertUrlPipe } from './Pipes/convert-url.pipe';
+import { PhonePipe } from './Pipes/phone.pipe';
+
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+
+const config: SocketIoConfig = {
+	url: environment.socketUrl, // socket server url;
+	options: {
+		transports: ['websocket']
+	}
+}
 
 @NgModule({
   declarations: [
@@ -42,7 +59,11 @@ import { DetailChatComponent } from './components/dynamics/chat/detail-chat/deta
     ProductDetailComponent,
     ChildrenComponent,
     ChatComponent,
-    DetailChatComponent
+    DetailChatComponent,
+    MaxLengthPipe,
+    FilterItemComponent,
+    ConvertUrlPipe,
+    PhonePipe,
   ],
   imports: [
     BrowserModule,
@@ -50,10 +71,13 @@ import { DetailChatComponent } from './components/dynamics/chat/detail-chat/deta
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgImageFullscreenViewModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDnCUhO9s_pDmEoDdypf-KQ-rxp0t5rFHM'
-    })
+    }),
+    SocketIoModule.forRoot(config),
+    QuillModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
@@ -61,4 +85,6 @@ import { DetailChatComponent } from './components/dynamics/chat/detail-chat/deta
   ],
   bootstrap: [AppComponent]
 })
+//
 export class AppModule { }
+

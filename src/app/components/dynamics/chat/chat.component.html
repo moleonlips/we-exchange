@@ -1,15 +1,28 @@
 <div class="container-fluid p-0 pb-3" style="background-color: rgb(236, 236, 236)">
      <div class="container">
-          <div class="row col-12 pr-0 box-chat-container">
-               <div class="col-4 p-0">
-                    <div class="list-contact">
-                         <div class="contact-item" *ngFor="let item of contactList">
-                              {{item}}
+          <div class="row col-12 pr-0 box-chat-container bg-white pl-0 ml-1">
+               <div class="col-4 p-0" style="height: 100%;">
+                    <div class="chat-filter">
+                         <div class="col-12">
+                              <div class="row">
+                                   <div (click)="onfilterChat('Tất cả')" class="col-4 text-center chat-filter-item" [class]="filterChat === 'Tất cả'? 'filter-item-active': ''">Tất cả</div>
+                                   <div (click)="onfilterChat('Tôi mua')" class="col-4 text-center chat-filter-item" [class]="filterChat === 'Tôi mua'? 'filter-item-active': ''">Tôi mua</div>
+                                   <div (click)="onfilterChat('Tôi bán')" class="col-4 text-center chat-filter-item" [class]="filterChat === 'Tôi bán'? 'filter-item-active': ''">Tôi bán</div>
+                              </div>
                          </div>
+                    </div>
+                    <div class="list-contact">
+                         <a class="contact-item d-flex align-items-center" routerLink="/chat/{{item.id}}" routerLinkActive="router-link-active"  routerLinkActive="box-chat-item" *ngFor="let item of listCompositeObject">
+                              <img class="user-avt" [src]="baseUrl + item.thumbnail" alt="avt">
+                              <div class="d-flex flex-column justify-content-between ml-3">
+                                   <h5 style="font-size: .9em">{{item.title | limitString: 30}}</h5>
+                                   <p>Tư vấn cho tôi với...</p>
+                              </div>
+                         </a>
                     </div>
                </div>
 
-               <div class="col-8 bg-primary">
+               <div class="col-8 p-0 laksjdf">
                     <router-outlet></router-outlet>
                </div>
           </div>
