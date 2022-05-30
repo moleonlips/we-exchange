@@ -74,8 +74,12 @@ export class SharedService {
   getProductById(id: number) {
     return this.http.get<Product>(this.baseUrl + '/Products/' + id);
   }
+  // GET PRODUCT BY userID
+  getProductByUID(uid: number):Observable<Product[]>{
+    return this.http.get<Product[]>(this.baseUrl + '/Products/ByUserID?_userID=' + uid);
+  }
 
-  // CATEGORIES
+  /// CATEGORIES
   getCategories():Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl + '/Categories');
   }

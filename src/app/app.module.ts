@@ -35,6 +35,8 @@ import { ConvertUrlPipe } from './Pipes/convert-url.pipe';
 import { PhonePipe } from './Pipes/phone.pipe';
 
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { ChartsModule } from 'ng2-charts';
+import { ProfileComponent } from './components/dynamics/profile/profile.component';
 
 const config: SocketIoConfig = {
 	url: environment.socketUrl, // socket server url;
@@ -64,8 +66,10 @@ const config: SocketIoConfig = {
     FilterItemComponent,
     ConvertUrlPipe,
     PhonePipe,
+    ProfileComponent,
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -77,7 +81,7 @@ const config: SocketIoConfig = {
       apiKey: 'AIzaSyDnCUhO9s_pDmEoDdypf-KQ-rxp0t5rFHM'
     }),
     SocketIoModule.forRoot(config),
-    QuillModule
+    QuillModule,
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },

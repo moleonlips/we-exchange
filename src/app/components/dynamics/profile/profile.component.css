@@ -1,0 +1,59 @@
+.a-line{
+   background-color: #f1f1f1;
+}
+
+.avt-profile {
+   border: 2px solid #fff;
+   border-radius: 100%;
+}
+
+.basic-info > div+div {
+   margin: 0 20px;
+}
+
+.follower span + span {
+   margin: 0 30px;
+}
+
+.user-name{
+   margin-bottom: 0;
+}
+
+.btn{
+   outline: none;
+   border: 2px solid rgb(255, 255, 255);
+   padding: 0;
+   margin: 0 20px;
+   border-radius: 100%;
+}
+
+.btn:hover {
+   border: 2px solid rgb(255, 166, 0);
+}
+
+.btn-follow{
+   color: #fff;
+   background-color: orange;
+   border: none;
+   outline: none;
+   padding: 5px 10px;
+   font-size: 1.2rem;
+}
+
+.border-dash{
+   border-right: 5px dashed rgb(255, 255, 255);
+}
+
+.btn-follow.dis {
+   background-color: #ccc;
+   color: #333;
+}
+
+.justify-content-center .text-center {
+   font-size: 1.3rem;
+   color: rgb(78, 78, 78);
+}
+
+.product-ctner > div + div {
+   margin: 0 10px;
+}

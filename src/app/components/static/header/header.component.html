@@ -189,14 +189,14 @@
                                                   </div>
                                                   <div class="other-info">
                                                        <div class="row m-0">
-                                                            <a class="btn btn-success mr-1 text-white"
+                                                            <button class="btn btn-success mr-1 text-white"
                                                                  (click)="openForm('l')">
                                                                  Đăng nhập
-                                                            </a>
-                                                            <a class="btn btn-primary text-white"
+                                                            </button>
+                                                            <button class="btn btn-primary text-white"
                                                                  (click)="openForm('r')">
                                                                  Đăng kí
-                                                            </a>
+                                                            </button>
 
                                                             <form *ngIf="formOpen === 'r'" class="user-form"
                                                                  [formGroup]="registerForm"
@@ -344,6 +344,7 @@
                                                                       </div>
                                                                  </div>
                                                             </form>
+
                                                             <form *ngIf="formOpen === 'l'" class="user-form"
                                                                  [formGroup]="loginForm"
                                                                  (ngSubmit)="onLogin(loginForm.value)">
@@ -408,11 +409,11 @@
                     </form>
 
                     <div class="d-flex align-items-center justify-content-end">
-                         <span title="{{numberOfConnection}} people are connecting" [class]="numberOfConnection? 'number-of-connect': ''">
+                         <span *ngIf="numberOfConnection" title="{{numberOfConnection}} people are connecting" [class]="numberOfConnection? 'number-of-connect': ''">
                               {{numberOfConnection}}
                          </span>
-                         <div class="user">
-                              <a href="">
+                         <div class="user" *ngIf="currentUser">
+                              <a [routerLink]="['/profile/',currentUser.id]" >
                                    <div [title]="currentUser? currentUser.ward + ' - ' + currentUser.district + ' - ' + currentUser.city: ''">
                                         <svg data-type="monochrome" xmlns="http://www.w3.org/2000/svg"
                                              viewBox="0 0 30 30" width="1em" height="1em" fill="none" class="is750wp">

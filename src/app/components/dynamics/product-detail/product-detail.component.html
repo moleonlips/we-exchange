@@ -52,7 +52,7 @@
                                    <img style="height: 22px; width:40px"
                                         src="https://static.chotot.com/storage/react-common/bank_icon.svg" alt="">
                               </span>
-                              Trả góp <b>29.87 triệu/tháng</b>, trả trước 640 triệu
+                              Trả góp: <b>Không hỗ trợ</b>
                          </div>
 
                          <!-- vị trí trên bản đồ -->
@@ -213,15 +213,16 @@
                                    </div>
                                    <div class="ml-3 d-flex flex-column justify-content-around">
                                         <b *ngIf="author">{{author.fullname}}</b>
+                                        
                                         <span class="text-success">
                                              <i class="fa-solid fa-circle"></i>
                                              Đang hoạt động
                                         </span>
                                    </div>
                                    <div style="flex: 1">
-                                        <button class="btn btn-viewpage float-right">
+                                        <a [routerLink]="['/profile/', author.id]" class="btn btn-viewpage float-right" >
                                              Xem trang
-                                        </button>
+                                        </a>
                                    </div>
                               </div>
                          </div>
